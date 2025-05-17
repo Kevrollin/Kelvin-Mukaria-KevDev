@@ -1,0 +1,219 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 50% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 215 90% 58%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 25% 40%;
+
+    --accent: 184 100% 40%; 
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 190 100% 40%; 
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212 94% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  ::selection {
+    @apply bg-accent/30 text-foreground;
+  }
+
+  /* Enhanced typing container */
+  .typing-container {
+    @apply overflow-hidden whitespace-nowrap inline-block pr-1;
+    position: relative;
+    animation: typing-cursor 1.2s step-end infinite;
+  }
+
+  @keyframes typing-cursor {
+    from, to { border-right: 2px solid transparent; }
+    50% { border-right: 2px solid var(--accent); }
+  }
+
+  .hacker-mode {
+    @apply bg-black text-[#4ade80] font-jetbrains;
+    transition: all 0.3s ease;
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-lg;
+  }
+  
+  /* Code snippet style */
+  .code-snippet {
+    @apply font-jetbrains text-sm bg-secondary/50 p-3 rounded-md overflow-x-auto;
+  }
+
+  /* Hover effect for skill cards */
+  .skill-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-2 cursor-pointer;
+  }
+  
+  /* Project card hover */
+  .project-card {
+    @apply transition-all duration-300;
+  }
+  
+  .project-card:hover {
+    @apply shadow-lg transform -translate-y-2;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/50;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full hover:bg-primary/70;
+  }
+  
+  /* Console warning style */
+  .console-warning {
+    @apply font-jetbrains text-xs p-2 rounded bg-[#FFF8E6] text-[#E5A50A] border-l-4 border-[#E5A50A] dark:bg-[#3F3927] dark:text-[#FFDB70];
+  }
+  
+  /* Console error style */
+  .console-error {
+    @apply font-jetbrains text-xs p-2 rounded bg-[#FEF2F2] text-[#EF4444] border-l-4 border-[#EF4444] dark:bg-[#3F2729] dark:text-[#F87171];
+  }
+
+  /* Mobile menu animations */
+  .mobile-menu-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .mobile-menu-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .mobile-menu-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  /* Enhanced animations */
+  @keyframes spin-in-90 {
+    from {
+      transform: rotate(-90deg);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(0);
+      opacity: 1;
+    }
+  }
+
+  .spin-in-90 {
+    animation: spin-in-90 0.3s ease-out;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.4s ease-out;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
