@@ -1,7 +1,7 @@
 
 # KelvinDev Portfolio
 
-![KelvinDev Portfolio Screenshot](https://placeholder.com/your-screenshot-here)
+![KelvinDev Portfolio Screenshot](./My%20portfolio.JPG)
 
 A professional developer portfolio with a twist of humor and personality. This portfolio showcases skills, projects, and contact information in a visually engaging way with subtle animations and interactive elements.
 
@@ -37,7 +37,7 @@ A professional developer portfolio with a twist of humor and personality. This p
 - **React Query**: Data fetching and cache management
 - **Vite**: Fast and optimized frontend build tool
 
-## 🔧 Installation & Setup
+## 🔧 Wanna Clone the File??
 
 ### Prerequisites
 - Node.js 16.x or higher
@@ -153,8 +153,8 @@ kelvindev-portfolio/
 
 ## 📝 License
 
-MIT License © [Your Name]
+MIT License © Kelvin Mukaria | KevDev
 
 ---
 
-Built with 💻 and ☕ by [KelvinDev](https://github.com/yourgithub)
+Built with 💻 and ☕ by [KevDev](https://github.com/Kevrollin)
