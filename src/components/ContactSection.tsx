@@ -180,7 +180,7 @@ const ContactSection = () => {
                 </a>
                 
                 <a 
-                  href="https://linkedin.com/in/yourlinkedin" 
+                  href="https://www.linkedin.com/in/kelvin-mukaria-831211359/" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-3 rounded-md hover:bg-secondary transition-colors"
@@ -190,13 +190,13 @@ const ContactSection = () => {
                 </a>
                 
                 <a 
-                  href="https://twitter.com/yourtwitter" 
+                  href="https://x.com/kevrollin012" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-3 rounded-md hover:bg-secondary transition-colors"
                 >
                   <Twitter className="h-6 w-6 mr-3 text-accent" />
-                  <span>Twitter</span>
+                  <span>Twitter | X</span>
                 </a>
               </div>
               

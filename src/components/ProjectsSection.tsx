@@ -194,7 +194,7 @@ const ProjectsSection = () => {
         <div className="text-center mt-10">
           <p className="text-muted-foreground mb-4">More projects on GitHub</p>
           <Button variant="outline" size="lg">
-            <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer" className="flex items-center">
+            <a href="https://github.com/Kevrollin/" target="_blank" rel="noopener noreferrer" className="flex items-center">
               <Github className="mr-2 h-5 w-5" /> View All Projects
             </a>
           </Button>
