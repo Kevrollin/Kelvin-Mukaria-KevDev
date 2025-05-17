@@ -1,8 +1,7 @@
-
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Moon, Sun, Code, Menu, X } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { Code, Menu, Moon, Sun, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const NavBar = () => {
   const [isDark, setIsDark] = useState(false);
@@ -41,7 +40,6 @@ const NavBar = () => {
   // Toggle mobile menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // When closing, add a closing animation
     if (isMenuOpen) {
       document.body.style.overflow = '';
     } else {
@@ -73,81 +71,91 @@ const NavBar = () => {
   };
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : ''}`}>
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="#" className="flex items-center space-x-2 text-lg font-bold z-20">
-          <Code className="text-accent" size={24} />
-          <span className="font-jetbrains">Kev<span className="text-accent">Dev</span></span>
-        </a>
+    <>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : ''}`}>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <a href="#" className="flex items-center space-x-2 text-lg font-bold z-20">
+            <Code className="text-accent" size={24} />
+            <span className="font-jetbrains">Kev<span className="text-accent">Dev</span></span>
+          </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">About</a>
-          <a href="#skills" className="text-sm font-medium hover:text-accent transition-colors">Skills</a>
-          <a href="#projects" className="text-sm font-medium hover:text-accent transition-colors">Projects</a>
-          <a href="#contact" className="text-sm font-medium hover:text-accent transition-colors">Contact</a>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">About</a>
+            <a href="#skills" className="text-sm font-medium hover:text-accent transition-colors">Skills</a>
+            <a href="#projects" className="text-sm font-medium hover:text-accent transition-colors">Projects</a>
+            <a href="#contact" className="text-sm font-medium hover:text-accent transition-colors">Contact</a>
+          </nav>
 
-        <div className="hidden md:flex items-center space-x-3">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="relative group"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-40 bg-background border shadow-sm px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-              {isDark ? 'Let there be light! 💡' : 'Save my retina! 🌙'}
-            </span>
-          </Button>
-          
-          <Button variant="outline" className="hidden md:inline-flex">
-            <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </Button>
-          
-          <Button className="hidden md:inline-flex font-medium" onClick={openCollaborateChat}>
-            Let's Collaborate
-          </Button>
+          <div className="hidden md:flex items-center space-x-3">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleTheme}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="relative group"
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-40 bg-background border shadow-sm px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                {isDark ? 'Let there be light! 💡' : 'Save my retina! 🌙'}
+              </span>
+            </Button>
+            
+            <Button variant="outline" className="hidden md:inline-flex">
+              <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </Button>
+            
+            <Button className="hidden md:inline-flex font-medium" onClick={openCollaborateChat}>
+              Let's Collaborate
+            </Button>
 
-          <Button variant="default" className="hidden md:inline-flex font-medium bg-accent hover:bg-accent/80" onClick={openHireMeChat}>
-            Hire Me!
-          </Button>
+            <Button variant="default" className="hidden md:inline-flex font-medium bg-accent hover:bg-accent/80" onClick={openHireMeChat}>
+              Hire Me!
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center space-x-3 md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleTheme}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </Button>
+
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleMenu}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMenuOpen ? (
+                <X size={24} className="animate-in fade-in spin-in-90" />
+              ) : (
+                <Menu size={24} className="animate-in fade-in spin-in-90" />
+              )}
+            </Button>
+          </div>
         </div>
+      </header>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center space-x-3 md:hidden">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </Button>
-
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? (
-              <X size={24} className="animate-in fade-in spin-in-90" />
-            ) : (
-              <Menu size={24} className="animate-in fade-in spin-in-90" />
-            )}
-          </Button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - moved outside header */}
       <div 
-        className={`fixed inset-0 bg-background/95 backdrop-blur-lg flex flex-col justify-center items-center transition-all duration-300 ease-in-out z-10 md:hidden
+        className={`fixed inset-0 bg-background/95 backdrop-blur-lg flex flex-col justify-center items-center transition-all duration-300 ease-in-out z-[9999] md:hidden
         ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
       >
+        <button
+          className="absolute top-6 right-6 text-2xl text-accent focus:outline-none"
+          onClick={toggleMenu}
+          aria-label="Close menu"
+          type="button"
+        >
+          <X size={32} />
+        </button>
         <nav className="flex flex-col items-center space-y-8">
           <a 
             href="#about" 
@@ -202,7 +210,7 @@ const NavBar = () => {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   );
 };
 

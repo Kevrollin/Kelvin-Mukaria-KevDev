@@ -65,7 +65,7 @@ const HeroSection = () => {
           </h1>
 
           <p className={`text-lg md:text-xl mt-6 text-muted-foreground transition-all duration-1000 delay-300 ${isTypingDone ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            I build cool sh*t and debug even cooler bugs.
+            I build cool sites/apps and debug even cooler bugs.
           </p>
           
           {showConsoleError && (

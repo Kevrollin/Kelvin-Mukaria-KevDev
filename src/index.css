@@ -217,3 +217,23 @@
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+/* Toast container: bottom center */
+.custom-toaster {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+/* Toast message styling */
+.custom-toast {
+  background: rgba(30, 41, 59, 0.95);
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  pointer-events: auto;
+  animation: fade-in-up 0.4s ease;
+}

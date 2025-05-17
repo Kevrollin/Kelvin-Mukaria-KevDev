@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, Twitter } from 'lucide-react';
 import { 
   Dialog,
   DialogContent,
@@ -104,7 +104,7 @@ const ContactSection = () => {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="your@awesome-email.com"
+                    placeholder="johndoe@gmail.com"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -152,15 +152,25 @@ const ContactSection = () => {
               
               <div className="space-y-4">
                 <a 
-                  href="mailto:your-email@example.com" 
+                  href="mailto:kelvinmukaria2023@gmail.com" 
                   className="flex items-center p-3 rounded-md hover:bg-secondary transition-colors"
                 >
                   <Mail className="h-6 w-6 mr-3 text-accent" />
-                  <span>your-email@example.com</span>
+                  <span>kelvinmukaria2023@gmail.com</span>
+                </a>
+                  
+                <a 
+                  className="flex items-center p-3 rounded-md hover:bg-secondary transition-colors"
+                >
+                  <Phone className="h-6 w-6 mr-3 text-accent" />
+                  <span className="flex flex-col">
+                    <a href="tel:+254708889092" className="hover:underline">+254 708 889 092</a>
+                    <a href="tel:+254757086742" className="hover:underline">+254 757 086 742</a>
+                </span>
                 </a>
                 
                 <a 
-                  href="https://github.com/yourgithub" 
+                  href="https://github.com/kevrollin" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-3 rounded-md hover:bg-secondary transition-colors"
