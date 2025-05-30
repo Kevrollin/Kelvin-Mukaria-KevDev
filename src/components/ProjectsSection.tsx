@@ -1,9 +1,9 @@
 
-import { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Github, ExternalLink } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { ExternalLink, Github } from 'lucide-react';
+import { useState } from 'react';
 
 interface Project {
   id: number;
@@ -32,6 +32,18 @@ const ProjectsSection = () => {
       demo: 'https://example.com',
       status: 'live'
     },
+    {
+      id: 2,
+      name: 'Palinesco PlanBuild Company Website',
+      description: 'A modern, responsive construction company site showcasing services, completed projects, and a user-friendly contact portal for clients across Tigania East, Meru-Kenya.',
+      caption: 'Designed to elevate local construction services with digital presence and client-focused UX.',
+      tags: ['React', 'ShadCN UI', 'Tailwind CSS', 'Vite'],
+      image: '/palinesco-overview-site.JPG',
+      github: 'https://github.com/Kevrollin/palinesco-plan-build-company',
+      demo: 'https://palinesco-plan-build-company.vercel.app/',
+      status: 'live'
+    },
+
     {
       id: 2,
       name: 'Finance Dashboard',
