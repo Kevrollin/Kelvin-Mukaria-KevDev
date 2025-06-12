@@ -44,8 +44,21 @@ const ProjectsSection = () => {
       status: 'live'
     },
 
+
     {
       id: 2,
+      name: 'Caffeinated Thoughts | Bloging site',
+      description: 'Personal Bloging site with Mpesa Daraja API integration for buy me coffe button. Fully responsive and functional',
+      caption: 'Made with coffe and love - Tech content.',
+      tags: ['React', 'ShadCN UI', 'Tailwind CSS', 'Vite'],
+      image: '/caffeinated-thoughts.PNG',
+      github: 'https://github.com/Kevrollin/caffeinated-thoughts-alpha',
+      demo: 'https://caffeinated-thoughts-alpha.vercel.app/',
+      status: 'live'
+    },
+    
+    {
+      id: 3,
       name: 'Finance Dashboard',
       description: 'Personal finance tracker with budgets, expense categories, charts, and dark mode.',
       caption: 'Where your money goes to get its act together.',
@@ -55,7 +68,7 @@ const ProjectsSection = () => {
       status: 'beta'
     },
     {
-      id: 3,
+      id: 4,
       name: 'Tech Services Agency Site',
       description: 'Sleek website for a tech startup with animations, a hire-dev modal form, and WhatsApp integration.',
       caption: 'Because hiring devs should be smart and sexy.',
@@ -65,7 +78,7 @@ const ProjectsSection = () => {
       status: 'live'
     },
     {
-      id: 4,
+      id: 5,
       name: 'Transport App for Matatu Booking',
       description: 'A platform for commuters to connect with nearby matatus, book seats, and get digital tickets.',
       caption: 'Kenya\'s Uber? Nah — Matatu\'s going digital, Kev-style.',
@@ -75,7 +88,7 @@ const ProjectsSection = () => {
       status: 'beta'
     },
     {
-      id: 5,
+      id: 6,
       name: 'Cybersecurity Chrome Extension',
       description: 'Scans Wi-Fi networks, triggers VPN on public networks, logs data securely.',
       caption: 'Your browser\'s bodyguard with hacker energy.',
@@ -85,7 +98,7 @@ const ProjectsSection = () => {
       status: 'concept'
     },
     {
-      id: 6,
+      id: 7,
       name: 'University Source Code Marketplace',
       description: 'Platform for uni students to sell/share source code projects.',
       caption: 'Your code, your coin. Hustle with hex.',
