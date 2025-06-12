@@ -51,7 +51,7 @@ const ProjectsSection = () => {
       description: 'Personal Bloging site with Mpesa Daraja API integration for buy me coffe button. Fully responsive and functional',
       caption: 'Made with coffe and love - Tech content.',
       tags: ['React', 'ShadCN UI', 'Tailwind CSS', 'Vite'],
-      image: '/caffeinated-thoughts.PNG',
+      image: '/caffeinated-thoughts.png',
       github: 'https://github.com/Kevrollin/caffeinated-thoughts-alpha',
       demo: 'https://caffeinated-thoughts-alpha.vercel.app/',
       status: 'live'
