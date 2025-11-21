@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 import { Github, Linkedin, Mail, Phone, Twitter } from 'lucide-react';
 import { 
   Dialog,
@@ -19,26 +20,76 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: ''
   });
   const [sending, setSending] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [errors, setErrors] = useState<{ phone?: string }>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Simple Kenyan phone validation helper
+  const isValidKenyanPhone = (phone: string) => {
+    const digits = phone.replace(/\D/g, '');
+    // Accept formats like: +2547XXXXXXXX, 2547XXXXXXXX, 07XXXXXXXX, 7XXXXXXXX
+    if (!digits) return false;
+    if (/^2547\d{8}$/.test(digits)) return true;
+    if (/^07\d{8}$/.test(digits)) return true;
+    if (/^7\d{8}$/.test(digits)) return true;
+    return false;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
+    // clear previous errors
+    setErrors({});
 
-    // Show confirmation dialog
+    // Validate phone if provided
+    if (formData.phone && !isValidKenyanPhone(formData.phone)) {
+      setErrors({ phone: 'Please enter a valid Kenyan phone number (e.g. +2547XXXXXXXX).' });
+      return;
+    }
+
+    // Open confirmation dialog to choose send method
     setShowConfirmDialog(true);
   };
 
+  const sendEmail = () => {
+    setSending(true);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
+
+    emailjs
+      .send('service_ej3wqaq', 'template_134wyxx', templateParams, 'OEzF15RYCvBQI8hwR')
+      .then(() => {
+        toast({
+          title: 'Message sent',
+          description: "Thanks! I've received your message and will get back to you soon.",
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setShowConfirmDialog(false);
+      })
+      .catch((err) => {
+        console.error('EmailJS error:', err);
+        toast({
+          title: 'Failed to send',
+          description: 'Something went wrong while sending your message. Please try again or use the contact links.',
+        });
+      })
+      .finally(() => setSending(false));
+  };
+
   const sendViaWhatsApp = () => {
-    const message = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
+    const message = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nMessage: ${formData.message}`;
     const whatsappUrl = `https://wa.me/254757086742?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
@@ -49,7 +100,7 @@ const ContactSection = () => {
       description: "You'll be redirected to WhatsApp to send your message.",
     });
     
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', email: '', phone: '', message: '' });
     setSending(false);
   };
 
@@ -112,6 +163,23 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium mb-1">
+                    Phone
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+254 7xx xxx xxx"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                  {errors.phone && (
+                    <p className="text-sm text-red-500 mt-1">{errors.phone}</p>
+                  )}
+                </div>
+                
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-1">
                     Message
                   </label>
@@ -127,8 +195,18 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button type="submit" disabled={sending} className="w-full sm:w-auto">
-                    {sending ? 'Sending...' : 'Send Message'}
+                  <Button type="submit" disabled={sending} className="w-full sm:w-auto flex items-center justify-center">
+                    {sending ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
                   </Button>
                   <Button 
                     type="button" 
@@ -214,23 +292,38 @@ const ContactSection = () => {
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Send via WhatsApp?</DialogTitle>
+            <DialogTitle>Send Message</DialogTitle>
             <DialogDescription>
-              Your message will be prepared for WhatsApp. You'll need to press send on WhatsApp to deliver it.
+              Choose how you'd like to send this message — via Email or WhatsApp.
             </DialogDescription>
           </DialogHeader>
           <div className="py-4">
             <p className="text-sm text-muted-foreground">
-              This will open WhatsApp with your message pre-filled. You can review it before sending.
+              You can send the message using Email (delivered to me via EmailJS) or open WhatsApp to send it from your device. Choose one below.
             </p>
           </div>
           <DialogFooter className="sm:justify-between">
-            <Button type="button" variant="secondary" onClick={cancelSend}>
-              Cancel
-            </Button>
-            <Button type="button" onClick={sendViaWhatsApp} className="bg-[#25D366] hover:bg-[#20BD5B] text-white">
-              Open WhatsApp
-            </Button>
+            <div className="flex gap-2 w-full sm:w-auto">
+              <Button type="button" variant="secondary" onClick={cancelSend} className="flex-1">
+                Cancel
+              </Button>
+              <Button type="button" onClick={sendEmail} className="flex-1">
+                {sending ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  'Send via Email'
+                )}
+              </Button>
+              <Button type="button" onClick={sendViaWhatsApp} className="bg-[#25D366] hover:bg-[#20BD5B] text-white flex-1">
+                Open WhatsApp
+              </Button>
+            </div>
           </DialogFooter>
         </DialogContent>
       </Dialog>

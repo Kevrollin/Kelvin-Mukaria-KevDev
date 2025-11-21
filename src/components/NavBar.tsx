@@ -80,7 +80,7 @@ const NavBar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6 ml-64">
             <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">About</a>
             <a href="#skills" className="text-sm font-medium hover:text-accent transition-colors">Skills</a>
             <a href="#projects" className="text-sm font-medium hover:text-accent transition-colors">Projects</a>

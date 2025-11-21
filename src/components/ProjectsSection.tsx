@@ -21,19 +21,69 @@ const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const projects: Project[] = [
-    {
+        {
       id: 1,
-      name: 'Student Productivity Dashboard',
-      description: 'A responsive web app to manage tasks, track progress, set reminders, and boost academic productivity.',
-      caption: 'Built for students by a student who gets the grind.',
-      tags: ['React', 'Firebase', 'Tailwind CSS'],
-      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&h=400&q=80',
-      github: 'https://github.com',
-      demo: 'https://example.com',
+      name: 'Opa Rides – Car & Driver Hire App',
+      description: 'A smooth mobile experience for booking cars and drivers on-demand, featuring real-time maps, secure authentication, and fast booking flows.',
+      caption: 'Making rides simple, fast, and accessible.',
+      tags: ['React Native', 'Supabase', 'Mapbox'],
+      image: '/oparides.png',
+      github: '#',  
+      demo: 'https://opa.deonhq.xyz',
       status: 'live'
     },
-    {
+
+        {
       id: 2,
+      name: 'Dairy Processing & Packaging Machines Company Ltd Website',
+      description: 'A modern, fully responsive company website built to showcase dairy processing machines, product categories, and client contact flow. Designed and developed end-to-end as paid client work.',
+      caption: 'Professional client-commissioned project delivered with precision.',
+      tags: ['Next.js', 'Tailwind CSS', 'Vercel'],
+      image: '/dppm.png',
+      github: 'https://github.com/Kevrollin/dairy-machines-hub',  
+      demo: 'https://dairy-machines-prod.vercel.app',
+      status: 'live'
+    },
+
+        {
+      id: 3,
+      name: 'MK GitPilot – Developer Automation Tool',
+      description: 'A smart command-line tool that automates common Git workflows like initializing repos, creating branches, committing, pushing, and syncing projects. Built to simplify repetitive Git tasks and boost developer speed.',
+      caption: 'A productivity tool built for devs who love smooth workflows.',
+      tags: ['Python', 'Node.js', 'React', 'Supabase'],
+      image: '/mkgitpilot.png',
+      github: 'https://github.com/Kevrollin',
+      demo: 'http://mkgitpilot-dev.vercel.app/',
+      status: 'live'
+    },
+
+    {
+      id: 4,
+      name: 'PatchNotes – Release Updates & Dev Blog Platform',
+      description: 'A clean, developer-focused platform for publishing patch notes, release updates, product announcements, and long-form dev blogs. Built to help teams keep users informed and stay transparent on development progress.',
+      caption: 'Where product updates meet storytelling.',
+      tags: ['Next.js', 'Supabase', 'Tailwind CSS', 'MDX'],
+      image: '/patchnotes.png',
+      github: 'https://github.com/Kevrollin',  
+      demo: 'https://patch-notes-dev.vercel.app/',
+      status: 'live',
+    },
+
+    {
+      id: 6,
+      name: 'JamoSec AI – Intelligent Cybersecurity Platform',
+      description: 'A next-gen cybersecurity platform powered by AI, built to detect vulnerabilities, analyze threats in real-time, and help organizations strengthen their digital defenses. Developed collaboratively with a dedicated team.',
+      caption: 'Smart security for a fast-moving digital world.',
+      tags: ['AI', 'Cybersecurity', 'Node.js', 'Python', 'React', 'Supabase'],
+      image: '/jambosec.png',
+      github: 'https://github.com/Kevrollin',  
+      demo: 'https://jambosecaiio.vercel.app/',
+      status: 'live',
+    },
+
+
+    {
+      id: 7,
       name: 'Palinesco PlanBuild Company Website',
       description: 'A modern, responsive construction company site showcasing services, completed projects, and a user-friendly contact portal for clients across Tigania East, Meru-Kenya.',
       caption: 'Designed to elevate local construction services with digital presence and client-focused UX.',
@@ -46,7 +96,7 @@ const ProjectsSection = () => {
 
 
     {
-      id: 2,
+      id: 8,
       name: 'Caffeinated Thoughts | Bloging site',
       description: 'Personal Bloging site with Mpesa Daraja API integration for buy me coffe button. Fully responsive and functional',
       caption: 'Made with coffe and love - Tech content.',
@@ -58,7 +108,7 @@ const ProjectsSection = () => {
     },
     
     {
-      id: 3,
+      id: 9,
       name: 'Finance Dashboard',
       description: 'Personal finance tracker with budgets, expense categories, charts, and dark mode.',
       caption: 'Where your money goes to get its act together.',
@@ -68,7 +118,7 @@ const ProjectsSection = () => {
       status: 'beta'
     },
     {
-      id: 4,
+      id: 10,
       name: 'Tech Services Agency Site',
       description: 'Sleek website for a tech startup with animations, a hire-dev modal form, and WhatsApp integration.',
       caption: 'Because hiring devs should be smart and sexy.',
@@ -78,7 +128,7 @@ const ProjectsSection = () => {
       status: 'live'
     },
     {
-      id: 5,
+      id: 11,
       name: 'Transport App for Matatu Booking',
       description: 'A platform for commuters to connect with nearby matatus, book seats, and get digital tickets.',
       caption: 'Kenya\'s Uber? Nah — Matatu\'s going digital, Kev-style.',
@@ -88,7 +138,7 @@ const ProjectsSection = () => {
       status: 'beta'
     },
     {
-      id: 6,
+      id: 12,
       name: 'Cybersecurity Chrome Extension',
       description: 'Scans Wi-Fi networks, triggers VPN on public networks, logs data securely.',
       caption: 'Your browser\'s bodyguard with hacker energy.',
@@ -98,7 +148,7 @@ const ProjectsSection = () => {
       status: 'concept'
     },
     {
-      id: 7,
+      id: 13,
       name: 'University Source Code Marketplace',
       description: 'Platform for uni students to sell/share source code projects.',
       caption: 'Your code, your coin. Hustle with hex.',
