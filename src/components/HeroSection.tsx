@@ -50,7 +50,7 @@ const HeroSection = () => {
         <div className="max-w-3xl mx-auto text-center">
           <div className="mb-6 inline-block">
             <span className="inline-block px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
-              Web Developer & Ethical Hacker
+              Full-stack Developer & Artificial Intelligence
             </span>
           </div>
 
@@ -60,7 +60,7 @@ const HeroSection = () => {
               <span className="inline-block w-[3px] h-8 ml-1 bg-accent animate-pulse"></span>
             </div>
             <div className={`font-jetbrains text-2xl md:text-3xl mt-4 text-accent transition-all duration-1000 ${isTypingDone ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              Web Developer, Ethical Hacker, Console Whisperer 👨‍💻
+              Full-Stack Engineer · Cybersecurity Enthusiast · AI-Driven Systems & Automation Builder
             </div>
           </h1>
 
