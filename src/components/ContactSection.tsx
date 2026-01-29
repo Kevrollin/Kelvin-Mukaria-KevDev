@@ -258,7 +258,7 @@ const ContactSection = () => {
                 </a>
                 
                 <a 
-                  href="https://www.linkedin.com/in/kelvin-mukaria-831211359/" 
+                  href="https://www.linkedin.com/in/kelvin-mukaria-98008b230/" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-3 rounded-md hover:bg-secondary transition-colors"
