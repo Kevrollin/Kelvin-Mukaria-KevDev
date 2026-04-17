@@ -1,214 +1,158 @@
-import { Button } from '@/components/ui/button';
-import { toast } from '@/hooks/use-toast';
-import { Code, Menu, Moon, Sun, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from "react";
+import { Menu, X, Sun, Moon, Monitor } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/components/ThemeProvider";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
 
 const NavBar = () => {
-  const [isDark, setIsDark] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  // Handle theme toggle
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-  };
-
-  // Check for saved theme preference or prefer-color-scheme
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    }
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    if (isMenuOpen) {
-      document.body.style.overflow = '';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  // Handle nav item click on mobile
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
-    document.body.style.overflow = '';
-  };
-
-  // Function to open WhatsApp chat with a pre-filled message
-  const openHireMeChat = () => {
-    toast({
-      title: "Opening WhatsApp",
-      description: "Taking you to WhatsApp to discuss your project...",
-    });
-    window.open(`https://wa.me/254757086742?text=${encodeURIComponent("Hi Kelvin! I'd like to hire you for a project.")}`, "_blank");
-  };
-
-  const openCollaborateChat = () => {
-    toast({
-      title: "Opening WhatsApp",
-      description: "Taking you to WhatsApp to discuss collaboration...",
-    });
-    window.open(`https://wa.me/254757086742?text=${encodeURIComponent("Hi Kelvin! I'd like to collaborate with you on a project.")}`, "_blank");
-  };
+  const closeMenu = () => setMenuOpen(false);
+  const ThemeIcon = theme === "dark" ? Moon : theme === "light" ? Sun : Monitor;
 
   return (
     <>
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : ''}`}>
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="#" className="flex items-center space-x-2 text-lg font-bold z-20">
-            <Code className="text-accent" size={24} />
-            <span className="font-jetbrains">Kev<span className="text-accent">Dev</span></span>
-          </a>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex items-center justify-between h-16">
+            <a href="#" className="font-bold text-lg tracking-tight" data-testid="link-logo">
+              Kelvin<span className="text-accent">.</span>
+            </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 ml-64">
-            <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">About</a>
-            <a href="#skills" className="text-sm font-medium hover:text-accent transition-colors">Skills</a>
-            <a href="#projects" className="text-sm font-medium hover:text-accent transition-colors">Projects</a>
-            <a href="#contact" className="text-sm font-medium hover:text-accent transition-colors">Contact</a>
-          </nav>
+            <nav className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={`link-nav-${l.label.toLowerCase()}`}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
 
-          <div className="hidden md:flex items-center space-x-3">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              className="relative group"
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
-              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-40 bg-background border shadow-sm px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                {isDark ? 'Let there be light! 💡' : 'Save my retina! 🌙'}
-              </span>
-            </Button>
-            
-            <Button variant="outline" className="hidden md:inline-flex">
-              <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            </Button>
-            
-            <Button className="hidden md:inline-flex font-medium" onClick={openCollaborateChat}>
-              Let's Collaborate
-            </Button>
+            <div className="hidden md:flex items-center gap-3">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle">
+                    <ThemeIcon className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setTheme("light")} data-testid="menu-item-light">
+                    <Sun className="mr-2 h-4 w-4" /> Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")} data-testid="menu-item-dark">
+                    <Moon className="mr-2 h-4 w-4" /> Dark
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("system")} data-testid="menu-item-system">
+                    <Monitor className="mr-2 h-4 w-4" /> System
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
-            <Button variant="default" className="hidden md:inline-flex font-medium bg-accent hover:bg-accent/80" onClick={openHireMeChat}>
-              Hire Me!
-            </Button>
-          </div>
+              <Button
+                size="sm"
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                data-testid="button-hire-me"
+              >
+                Hire Me
+              </Button>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-3 md:hidden">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </Button>
-
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleMenu}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {isMenuOpen ? (
-                <X size={24} className="animate-in fade-in spin-in-90" />
-              ) : (
-                <Menu size={24} className="animate-in fade-in spin-in-90" />
-              )}
-            </Button>
+            <div className="flex md:hidden items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle-mobile">
+                    <ThemeIcon className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    <Sun className="mr-2 h-4 w-4" /> Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    <Moon className="mr-2 h-4 w-4" /> Dark
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                    <Monitor className="mr-2 h-4 w-4" /> System
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMenuOpen(!menuOpen)}
+                data-testid="button-mobile-menu"
+              >
+                {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay - moved outside header */}
-      <div 
-        className={`fixed inset-0 bg-background/95 backdrop-blur-lg flex flex-col justify-center items-center transition-all duration-300 ease-in-out z-[9999] md:hidden
-        ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+      <div
+        className={`fixed inset-0 z-40 bg-background/98 backdrop-blur-lg flex flex-col justify-center items-center gap-8 md:hidden transition-all duration-300 ${
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
       >
         <button
-          className="absolute top-6 right-6 text-2xl text-accent focus:outline-none"
-          onClick={toggleMenu}
-          aria-label="Close menu"
-          type="button"
+          className="absolute top-5 right-5"
+          onClick={closeMenu}
+          data-testid="button-close-mobile-menu"
         >
-          <X size={32} />
+          <X className="h-6 w-6" />
         </button>
-        <nav className="flex flex-col items-center space-y-8">
-          <a 
-            href="#about" 
-            className="text-xl font-medium hover:text-accent transition-all hover:scale-110 transform"
-            onClick={handleNavClick}
+        {navLinks.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            onClick={closeMenu}
+            className="text-2xl font-semibold hover:text-accent transition-colors"
+            data-testid={`link-mobile-${l.label.toLowerCase()}`}
           >
-            About
+            {l.label}
           </a>
-          <a 
-            href="#skills" 
-            className="text-xl font-medium hover:text-accent transition-all hover:scale-110 transform"
-            onClick={handleNavClick}
-          >
-            Skills
-          </a>
-          <a 
-            href="#projects" 
-            className="text-xl font-medium hover:text-accent transition-all hover:scale-110 transform"
-            onClick={handleNavClick}
-          >
-            Projects
-          </a>
-          <a 
-            href="#contact" 
-            className="text-xl font-medium hover:text-accent transition-all hover:scale-110 transform"
-            onClick={handleNavClick}
-          >
-            Contact
-          </a>
-          
-          <div className="pt-6 flex flex-col gap-4 items-center w-64">
-            <Button variant="outline" className="w-full" onClick={() => {
-              window.open("https://github.com/yourgithub", "_blank");
-              handleNavClick();
-            }}>
-              GitHub
-            </Button>
-            
-            <Button className="w-full" onClick={() => {
-              openCollaborateChat();
-              handleNavClick();
-            }}>
-              Let's Collaborate
-            </Button>
-
-            <Button variant="default" className="w-full bg-accent hover:bg-accent/80" onClick={() => {
-              openHireMeChat();
-              handleNavClick();
-            }}>
-              Hire Me!
-            </Button>
-          </div>
-        </nav>
+        ))}
+        <Button
+          size="lg"
+          className="mt-4 w-40"
+          onClick={() => {
+            closeMenu();
+            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+          }}
+          data-testid="button-hire-me-mobile"
+        >
+          Hire Me
+        </Button>
       </div>
     </>
   );

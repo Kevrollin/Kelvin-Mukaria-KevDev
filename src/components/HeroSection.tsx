@@ -1,102 +1,122 @@
-
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Terminal } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { useState, useEffect } from "react";
+import { ArrowRight, MapPin, Github, Linkedin, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const HeroSection = () => {
-  const [isTypingDone, setIsTypingDone] = useState(false);
-  const [showConsoleError, setShowConsoleError] = useState(false);
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Hey, I'm Kelvin";
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let i = 0;
-    const typingInterval = setInterval(() => {
-      if (i <= fullText.length) {
-        setTypedText(fullText.slice(0, i));
-        i++;
-      } else {
-        clearInterval(typingInterval);
-        setTimeout(() => setIsTypingDone(true), 500);
-      }
-    }, 120);
-
-    // Log easter egg to console
-    console.log("%cHey hacker 👀 — want to collab? Email me!", "color: #4ade80; font-size: 20px; font-weight: bold;");
-
-    return () => clearInterval(typingInterval);
+    const t = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(t);
   }, []);
 
-  const triggerFakeError = () => {
-    setShowConsoleError(true);
-    toast({
-      title: "System Error",
-      description: "Uncaught TypeError: Cannot read properties of undefined (reading 'talent')",
-      variant: "destructive",
-    });
-    setTimeout(() => setShowConsoleError(false), 4000);
-  };
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-accent/5"></div>
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
+    <section className="min-h-screen flex flex-col justify-center pt-16 relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
       </div>
-      
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="mb-6 inline-block">
-            <span className="inline-block px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
-              Full-stack Developer & Artificial Intelligence
+
+      <div className="container mx-auto px-4 md:px-6">
+        <div
+          className={`max-w-3xl transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <div className="flex items-center gap-2 mb-6" data-testid="text-location">
+            <MapPin className="h-4 w-4 text-accent" />
+            <span className="text-sm text-muted-foreground">Egerton, Kenya</span>
+            <span className="inline-flex items-center gap-1.5 ml-3 px-2.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium" data-testid="status-availability">
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+              Available for hire
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <div className="mb-2 h-16">
-              <span>{typedText}</span>
-              <span className="inline-block w-[3px] h-8 ml-1 bg-accent animate-pulse"></span>
-            </div>
-            <div className={`font-jetbrains text-2xl md:text-3xl mt-4 text-accent transition-all duration-1000 ${isTypingDone ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              Full-Stack Engineer · Cybersecurity Enthusiast · AI-Driven Systems & Automation Builder
-            </div>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-none" data-testid="text-hero-name">
+            Kelvin<br />
+            <span className="text-accent">Mukaria</span>
           </h1>
 
-          <p className={`text-lg md:text-xl mt-6 text-muted-foreground transition-all duration-1000 delay-300 ${isTypingDone ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            I build cool sites/apps and debug even cooler bugs.
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl leading-relaxed" data-testid="text-hero-tagline">
+            Full-Stack Engineer · Cybersecurity · AI & Automation · Entrepreneur
           </p>
-          
-          {showConsoleError && (
-            <div className="console-error mx-auto mt-6 max-w-md text-left animate-fade-in-up">
-              <div className="flex items-center">
-                <Terminal size={14} className="mr-2" />
-                <span className="font-bold">ERROR:</span>
-              </div>
-              <code className="block mt-1">Uncaught TypeError: Cannot read properties of undefined (reading 'talent')</code>
-              <span className="block mt-1 text-xs">at HireKelvin.js:42</span>
-            </div>
-          )}
 
-          <div className={`mt-8 flex flex-col sm:flex-row justify-center gap-4 transition-all duration-1000 delay-500 ${isTypingDone ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <Button size="lg" className="font-medium">
-              <a href="#projects">See My Work <ArrowRight className="ml-2 w-4 h-4" /></a>
+          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-xl leading-relaxed" data-testid="text-hero-description">
+            I build production-grade web applications, automate workflows with AI, and design
+            systems with security at their core. Computer Science student at Egerton University,
+            shipping real products.
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-10" data-testid="list-domains">
+            {["React", "Node.js", "TypeScript", "Python", "Cybersecurity", "AI Automation", "Flutter", "Firebase"].map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs font-medium" data-testid={`badge-skill-${tag}`}>
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-4 items-center">
+            <Button
+              size="lg"
+              onClick={() => scrollTo("projects")}
+              data-testid="button-view-work"
+              className="gap-2"
+            >
+              View My Work <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="lg" onClick={triggerFakeError} className="font-medium">
-              Break Something
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => scrollTo("contact")}
+              data-testid="button-get-in-touch"
+            >
+              Get in Touch
             </Button>
+
+            <div className="flex items-center gap-3 ml-auto">
+              <a
+                href="https://github.com/Kevrollin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                data-testid="link-github"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                data-testid="link-linkedin"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:kelvinmukaria@example.com"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                data-testid="link-email"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </a>
-      </div>
+
+      <a
+        href="#about"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
+        data-testid="link-scroll-down"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </a>
     </section>
   );
 };

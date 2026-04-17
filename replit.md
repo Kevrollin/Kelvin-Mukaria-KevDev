@@ -1,36 +1,48 @@
-# Kelvin-Mukaria | KevDev Portfolio
+# Kelvin Mukaria | KevDev — Professional Portfolio
 
 ## Overview
-A personal portfolio website for Kelvin Mukaria (KevDev), built with React, TypeScript, Vite, Tailwind CSS, and shadcn/ui components. Originally created in Lovable, migrated to Replit.
+A minimal, professional digital portfolio for Kelvin Mukaria (KevDev) — Full-Stack Engineer, Cybersecurity, AI & Automation, Entrepreneur. Built with React, TypeScript, Vite, Tailwind CSS, and shadcn/ui.
 
 ## Tech Stack
-- **Frontend**: React 18, TypeScript, Vite
+- **Frontend**: React 18, TypeScript, Vite 5
 - **Styling**: Tailwind CSS, shadcn/ui (Radix UI components)
 - **Routing**: React Router DOM v6
-- **Forms**: React Hook Form + Zod validation
-- **Email**: EmailJS browser SDK
-- **Charts**: Recharts
-- **Theme**: next-themes (dark/light mode support)
+- **Forms + Email**: React Hook Form, EmailJS browser SDK
+- **Theme**: Custom ThemeProvider with light/dark/system support
 
-## Project Structure
+## Structure
 ```
 src/
-  App.tsx         - Main app with routing
-  main.tsx        - Entry point
-  pages/          - Page components
-  components/     - Reusable UI components
-  hooks/          - Custom React hooks
-  lib/            - Utility functions
+  App.tsx                    - Root app with ThemeProvider wrapping
+  main.tsx                   - Entry point
+  index.css                  - Global styles, CSS variables, smooth scroll
+  pages/
+    Index.tsx                - Main single-page layout
+    NotFound.tsx             - 404 page
+  components/
+    ThemeProvider.tsx        - Light/dark/system theme context
+    NavBar.tsx               - Fixed nav with theme toggle dropdown + mobile menu
+    HeroSection.tsx          - Name, tagline, CTA buttons, social links
+    AboutSection.tsx         - Bio, stats, 4-domain pillar cards
+    SkillsSection.tsx        - Filterable skills grid with proficiency badges
+    ProjectsSection.tsx      - Filterable project cards (live/beta)
+    ContactSection.tsx       - Email + WhatsApp contact form + socials
+    Footer.tsx               - Minimal footer with links
+    ui/                      - shadcn/ui component library
 ```
 
-## Running the App
+## Theme Support
+- Light mode (default)
+- Dark mode
+- System preference detection
+- Persisted to localStorage under `kev-theme`
+
+## Contact / Email
+- EmailJS integration: service_ej3wqaq / template_134wyxx
+- WhatsApp direct link to +254 757 086 742
+
+## Running
 ```bash
-npm run dev    # Start dev server on port 5000
+npm run dev    # Dev server on port 5000
 npm run build  # Production build
 ```
-
-## Migration Notes (Lovable → Replit)
-- Removed `lovable-tagger` plugin from Vite config (Lovable-specific)
-- Removed Lovable CDN script from `index.html`
-- Updated Vite server config: `host: "0.0.0.0"`, `port: 5000`, `allowedHosts: true`
-- Configured workflow to run `npm run dev` on port 5000 (webview)
