@@ -12,7 +12,7 @@ const Footer = () => {
               Kelvin<span className="text-accent">.</span>
             </a>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Full-Stack · Cybersecurity · AI & Automation
+              Software Engineer · AI Builder · Co-founder, Ardena Platform Africa
             </p>
           </div>
 

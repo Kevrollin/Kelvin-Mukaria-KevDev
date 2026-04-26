@@ -30,7 +30,7 @@ const HeroSection = () => {
           {/* Location + availability */}
           <div className="flex flex-wrap items-center gap-2 mb-6" data-testid="text-location">
             <MapPin className="h-4 w-4 text-accent flex-shrink-0" />
-            <span className="text-sm text-muted-foreground">Egerton, Kenya</span>
+            <span className="text-sm text-muted-foreground">Kenya</span>
             <span
               className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium"
               data-testid="status-availability"
@@ -62,9 +62,9 @@ const HeroSection = () => {
             className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed"
             data-testid="text-hero-description"
           >
-            I build production-grade web applications, automate workflows with AI, and design
-            systems with security at their core. CS student at Egerton University, shipping
-            real products.
+            Software Engineer, AI & Automation Builder, and young entrepreneur. Co-founder &amp; COO
+            of <span className="font-medium text-foreground">Ardena Platform Africa</span> — building
+            production-grade software, intelligent systems, and secure digital infrastructure.
           </p>
 
           {/* Skill badges */}

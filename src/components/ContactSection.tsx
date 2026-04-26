@@ -200,7 +200,7 @@ const ContactSection = () => {
                   <p>
                     <span className="font-medium text-foreground">Location</span>
                     <br />
-                    Egerton, Kenya
+                    Kenya
                   </p>
                 </div>
               </div>

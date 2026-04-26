@@ -45,22 +45,22 @@ const AboutSection = () => {
                 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5 leading-tight"
                 data-testid="text-about-heading"
               >
-                Engineer. Builder.<br />Security-Minded.
+                Engineer. Builder.<br />Entrepreneur.
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed" data-testid="text-about-body">
                 <p>
-                  Computer Science student at Egerton University, Kenya — building production-grade
-                  software across the full stack while deepening expertise in cybersecurity and
-                  AI-powered automation.
+                  I'm a Software Engineer and AI & Automation Builder by profession — designing and
+                  shipping production-grade software, intelligent systems, and secure digital
+                  infrastructure across the full stack.
                 </p>
                 <p>
-                  I don't just write code. I ship products. My portfolio includes live SaaS tools,
-                  AI-integrated platforms, a cybersecurity startup, and client websites — all
-                  designed, built, and deployed by me.
+                  As <span className="font-medium text-foreground">Co-founder & COO of Ardena Platform Africa</span>,
+                  I'm building technology that solves real problems on the continent — combining
+                  engineering execution with strategic product vision.
                 </p>
                 <p>
-                  Need a developer who moves fast, thinks security, and delivers polished results?
-                  That's what I do.
+                  I don't just write code. I ship products. Live SaaS tools, AI-integrated platforms,
+                  a cybersecurity startup, client websites — all designed, built, and deployed by me.
                 </p>
               </div>
 
