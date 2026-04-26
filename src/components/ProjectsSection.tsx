@@ -166,10 +166,10 @@ const ProjectsSection = () => {
             {filtered.map((project) => (
               <div
                 key={project.id}
-                className="group rounded-2xl border border-border overflow-hidden bg-background hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+                className="group flex flex-col rounded-2xl border border-border overflow-hidden bg-background hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
                 data-testid={`card-project-${project.id}`}
               >
-                <div className="relative aspect-video overflow-hidden bg-secondary/30">
+                <div className="relative aspect-video overflow-hidden bg-secondary/30 flex-shrink-0">
                   <img
                     src={project.image}
                     alt={project.name}
@@ -187,29 +187,34 @@ const ProjectsSection = () => {
                   </span>
                 </div>
 
-                <div className="p-4 sm:p-5">
+                <div className="flex flex-col flex-1 p-4 sm:p-5">
                   <h3
-                    className="font-semibold text-sm sm:text-base mb-2 leading-snug"
+                    className="font-semibold text-sm sm:text-base mb-2 leading-snug line-clamp-2"
                     data-testid={`text-project-name-${project.id}`}
                   >
                     {project.name}
                   </h3>
                   <p
-                    className="text-xs sm:text-sm text-muted-foreground mb-3 leading-relaxed"
+                    className="text-xs sm:text-sm text-muted-foreground mb-3 leading-relaxed line-clamp-3"
                     data-testid={`text-project-desc-${project.id}`}
                   >
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5 mb-4" data-testid={`list-project-tags-${project.id}`}>
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-[10px] sm:text-xs">
+                  <div className="flex flex-wrap gap-1.5 mb-4 overflow-hidden max-h-[3.25rem]" data-testid={`list-project-tags-${project.id}`}>
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-[10px] sm:text-xs whitespace-nowrap">
                         {tag}
                       </Badge>
                     ))}
+                    {project.tags.length > 4 && (
+                      <Badge variant="outline" className="text-[10px] sm:text-xs whitespace-nowrap text-muted-foreground">
+                        +{project.tags.length - 4}
+                      </Badge>
+                    )}
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mt-auto pt-1">
                     {project.github && (
                       <Button
                         variant="outline"
