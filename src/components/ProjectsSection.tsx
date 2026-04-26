@@ -28,6 +28,16 @@ const projects: Project[] = [
     status: "live",
   },
   {
+    id: 2,
+    name: "DPPM Ltd – Dairy Processing & Packaging Machines",
+    description:
+      "Corporate website for Dairy Processing and Packaging Machines Ltd — a leading Kenyan provider of dairy machinery supply, installation, and commissioning services.",
+    tags: ["React", "Tailwind CSS", "Vite", "Corporate"],
+    image: "/dppm.png",
+    demo: "https://dppmltd.com/",
+    status: "live",
+  },
+  {
     id: 6,
     name: "JamoSec AI – Cybersecurity Platform",
     description:
