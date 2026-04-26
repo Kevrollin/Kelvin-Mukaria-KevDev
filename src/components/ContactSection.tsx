@@ -25,16 +25,13 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-
-    const params = {
-      from_name: form.name,
-      from_email: form.email,
-      subject: form.subject,
-      message: form.message,
-    };
-
     emailjs
-      .send("service_ej3wqaq", "template_134wyxx", params, "OEzF15RYCvBQI8hwR")
+      .send(
+        "service_ej3wqaq",
+        "template_134wyxx",
+        { from_name: form.name, from_email: form.email, subject: form.subject, message: form.message },
+        "OEzF15RYCvBQI8hwR"
+      )
       .then(() => {
         toast({ title: "Message sent", description: "Thanks! I'll get back to you shortly." });
         setForm({ name: "", email: "", subject: "", message: "" });
@@ -55,24 +52,35 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-secondary/20 dark:bg-secondary/10">
+    <section id="contact" className="py-16 md:py-24 bg-secondary/20 dark:bg-secondary/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4 text-center" data-testid="text-contact-label">
+          <p
+            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-center"
+            data-testid="text-contact-label"
+          >
             Contact
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center mb-4" data-testid="text-contact-heading">
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center mb-3"
+            data-testid="text-contact-heading"
+          >
             Let's Work Together
           </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto" data-testid="text-contact-description">
+          <p
+            className="text-center text-sm sm:text-base text-muted-foreground mb-10 sm:mb-14 max-w-xl mx-auto"
+            data-testid="text-contact-description"
+          >
             Open to freelance projects, full-time roles, and interesting collaborations.
-            Reach out and I'll respond within 24 hours.
+            I'll respond within 24 hours.
           </p>
 
-          <div className="grid md:grid-cols-5 gap-12">
+          <div className="grid md:grid-cols-5 gap-8 md:gap-12">
+            {/* Form — full width on mobile, 3/5 on desktop */}
             <div className="md:col-span-3">
               <form onSubmit={handleSubmit} className="space-y-4" data-testid="form-contact">
-                <div className="grid grid-cols-2 gap-4">
+                {/* Name + Email — stacked on mobile, side-by-side on sm+ */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="text-sm font-medium block mb-1.5">
                       Name
@@ -135,15 +143,20 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <div className="flex gap-3 pt-1">
-                  <Button type="submit" disabled={sending} className="flex-1" data-testid="button-send-email">
+                <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                  <Button
+                    type="submit"
+                    disabled={sending}
+                    className="w-full sm:flex-1"
+                    data-testid="button-send-email"
+                  >
                     {sending ? "Sending..." : "Send Message"}
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
                     onClick={sendWhatsApp}
-                    className="gap-2"
+                    className="w-full sm:w-auto gap-2"
                     data-testid="button-send-whatsapp"
                   >
                     <MessageCircle className="h-4 w-4" /> WhatsApp
@@ -152,36 +165,52 @@ const ContactSection = () => {
               </form>
             </div>
 
-            <div className="md:col-span-2 flex flex-col justify-between gap-8">
+            {/* Sidebar — stacks below on mobile */}
+            <div className="md:col-span-2 flex flex-col gap-8 mt-2 md:mt-0">
+              {/* Direct contact */}
               <div>
                 <h3 className="font-semibold text-base mb-4" data-testid="text-contact-info-heading">
                   Direct Contact
                 </h3>
                 <div className="space-y-3 text-sm text-muted-foreground">
                   <p>
-                    <span className="font-medium text-foreground">Email</span><br />
-                    <a href="mailto:kelvinmukaria@gmail.com" className="hover:text-accent transition-colors" data-testid="link-email-direct">
+                    <span className="font-medium text-foreground">Email</span>
+                    <br />
+                    <a
+                      href="mailto:kelvinmukaria@gmail.com"
+                      className="hover:text-accent transition-colors break-all"
+                      data-testid="link-email-direct"
+                    >
                       kelvinmukaria@gmail.com
                     </a>
                   </p>
                   <p>
-                    <span className="font-medium text-foreground">WhatsApp</span><br />
-                    <a href="https://wa.me/254757086742" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" data-testid="link-whatsapp-direct">
+                    <span className="font-medium text-foreground">WhatsApp</span>
+                    <br />
+                    <a
+                      href="https://wa.me/254757086742"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-accent transition-colors"
+                      data-testid="link-whatsapp-direct"
+                    >
                       +254 757 086 742
                     </a>
                   </p>
                   <p>
-                    <span className="font-medium text-foreground">Location</span><br />
+                    <span className="font-medium text-foreground">Location</span>
+                    <br />
                     Egerton, Kenya
                   </p>
                 </div>
               </div>
 
+              {/* Socials */}
               <div>
                 <h3 className="font-semibold text-base mb-4" data-testid="text-socials-heading">
                   Find Me Online
                 </h3>
-                <div className="flex flex-col gap-3" data-testid="list-socials">
+                <div className="grid grid-cols-2 sm:grid-cols-1 gap-3" data-testid="list-socials">
                   {socials.map((s) => (
                     <a
                       key={s.label}
@@ -191,7 +220,7 @@ const ContactSection = () => {
                       className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors group"
                       data-testid={`link-social-${s.label.toLowerCase().replace(/[^a-z]/g, "-")}`}
                     >
-                      <span className="w-8 h-8 rounded-lg border border-border group-hover:border-accent/40 flex items-center justify-center transition-colors">
+                      <span className="w-8 h-8 rounded-lg border border-border group-hover:border-accent/40 flex items-center justify-center transition-colors flex-shrink-0">
                         <s.icon className="h-4 w-4" />
                       </span>
                       {s.label}

@@ -21,7 +21,7 @@ const projects: Project[] = [
     id: 6,
     name: "JamoSec AI – Cybersecurity Platform",
     description:
-      "AI-powered cybersecurity platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
+      "AI-powered platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
     tags: ["AI", "Cybersecurity", "React", "Node.js", "Python", "Supabase"],
     image: "/jambosec.png",
     github: "https://github.com/Kevrollin",
@@ -32,7 +32,7 @@ const projects: Project[] = [
     id: 3,
     name: "MK GitPilot – Developer Automation Tool",
     description:
-      "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Built to eliminate repetitive dev tasks and boost shipping speed.",
+      "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
     tags: ["Python", "Node.js", "React", "Supabase"],
     image: "/mkgitpilot.png",
     github: "https://github.com/Kevrollin",
@@ -43,7 +43,7 @@ const projects: Project[] = [
     id: 4,
     name: "PatchNotes – Release & Dev Blog Platform",
     description:
-      "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs. Helps teams stay transparent on progress.",
+      "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
     tags: ["Next.js", "Supabase", "Tailwind CSS", "MDX"],
     image: "/patchnotes.png",
     github: "https://github.com/Kevrollin",
@@ -54,7 +54,7 @@ const projects: Project[] = [
     id: 7,
     name: "Palinesco – Construction Company Website",
     description:
-      "Modern, responsive website for a construction company in Meru, Kenya. Showcases services, completed projects, and a client contact portal.",
+      "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
     tags: ["React", "shadcn/ui", "Tailwind CSS", "Vite"],
     image: "/palinesco-overview-site.JPG",
     github: "https://github.com/Kevrollin/palinesco-plan-build-company",
@@ -65,7 +65,7 @@ const projects: Project[] = [
     id: 8,
     name: "Caffeinated Thoughts – Tech Blog",
     description:
-      "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive and functional.",
+      "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
     tags: ["React", "shadcn/ui", "Tailwind CSS", "M-Pesa API"],
     image: "/caffeinated-thoughts.png",
     github: "https://github.com/Kevrollin/caffeinated-thoughts-alpha",
@@ -76,7 +76,7 @@ const projects: Project[] = [
     id: 9,
     name: "Transport Booking – Matatu App",
     description:
-      "Mobile platform for Kenyan commuters to connect with nearby matatus, book seats, and receive digital tickets. Flutter + Firebase.",
+      "Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets. Flutter + Firebase.",
     tags: ["Flutter", "Firebase", "Google Maps API"],
     image: "https://images.unsplash.com/photo-1592853598064-a829ed372c0c?auto=format&fit=crop&w=600&h=400&q=80",
     github: "https://github.com/Kevrollin",
@@ -101,25 +101,35 @@ const ProjectsSection = () => {
   const filtered = active === "all" ? projects : projects.filter((p) => p.status === active);
 
   return (
-    <section id="projects" className="py-24 bg-background">
+    <section id="projects" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4 text-center" data-testid="text-projects-label">
+          <p
+            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-center"
+            data-testid="text-projects-label"
+          >
             Work
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center mb-4" data-testid="text-projects-heading">
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center mb-3"
+            data-testid="text-projects-heading"
+          >
             Selected Projects
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto" data-testid="text-projects-description">
+          <p
+            className="text-center text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto"
+            data-testid="text-projects-description"
+          >
             Real products I've built, shipped, and maintain.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-10" data-testid="list-project-filters">
+          {/* Filters */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8" data-testid="list-project-filters">
             {filters.map((f) => (
               <button
                 key={f.key}
                 onClick={() => setActive(f.key)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-150 ${
+                className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   active === f.key
                     ? "bg-accent text-white shadow-sm"
                     : "bg-background border border-border text-muted-foreground hover:text-foreground hover:border-accent/40"
@@ -131,11 +141,12 @@ const ProjectsSection = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="list-projects">
+          {/* Project grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" data-testid="list-projects">
             {filtered.map((project) => (
               <div
                 key={project.id}
-                className="group rounded-2xl border border-border overflow-hidden bg-background hover:shadow-lg hover:-translate-y-1 transition-all duration-250"
+                className="group rounded-2xl border border-border overflow-hidden bg-background hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
                 data-testid={`card-project-${project.id}`}
               >
                 <div className="relative aspect-video overflow-hidden bg-secondary/30">
@@ -156,17 +167,23 @@ const ProjectsSection = () => {
                   </span>
                 </div>
 
-                <div className="p-5">
-                  <h3 className="font-semibold text-base mb-2 leading-snug" data-testid={`text-project-name-${project.id}`}>
+                <div className="p-4 sm:p-5">
+                  <h3
+                    className="font-semibold text-sm sm:text-base mb-2 leading-snug"
+                    data-testid={`text-project-name-${project.id}`}
+                  >
                     {project.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed" data-testid={`text-project-desc-${project.id}`}>
+                  <p
+                    className="text-xs sm:text-sm text-muted-foreground mb-3 leading-relaxed"
+                    data-testid={`text-project-desc-${project.id}`}
+                  >
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5 mb-5" data-testid={`list-project-tags-${project.id}`}>
+                  <div className="flex flex-wrap gap-1.5 mb-4" data-testid={`list-project-tags-${project.id}`}>
                     {project.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <Badge key={tag} variant="secondary" className="text-[10px] sm:text-xs">
                         {tag}
                       </Badge>
                     ))}
@@ -174,15 +191,36 @@ const ProjectsSection = () => {
 
                   <div className="flex gap-2">
                     {project.github && (
-                      <Button variant="outline" size="sm" asChild data-testid={`button-github-${project.id}`}>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="text-xs h-8 px-3"
+                        data-testid={`button-github-${project.id}`}
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5"
+                        >
                           <Github className="h-3.5 w-3.5" /> Code
                         </a>
                       </Button>
                     )}
                     {project.demo && (
-                      <Button size="sm" asChild data-testid={`button-demo-${project.id}`}>
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
+                      <Button
+                        size="sm"
+                        asChild
+                        className="text-xs h-8 px-3"
+                        data-testid={`button-demo-${project.id}`}
+                      >
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5"
+                        >
                           <ExternalLink className="h-3.5 w-3.5" /> Live Demo
                         </a>
                       </Button>
@@ -193,9 +231,14 @@ const ProjectsSection = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-10">
             <Button variant="outline" size="lg" asChild data-testid="button-view-all-github">
-              <a href="https://github.com/Kevrollin" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <a
+                href="https://github.com/Kevrollin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
                 <Github className="h-4 w-4" /> More on GitHub
               </a>
             </Button>

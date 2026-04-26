@@ -17,8 +17,8 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center pt-16 relative overflow-hidden">
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-primary/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
@@ -27,44 +27,64 @@ const HeroSection = () => {
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <div className="flex items-center gap-2 mb-6" data-testid="text-location">
-            <MapPin className="h-4 w-4 text-accent" />
+          {/* Location + availability */}
+          <div className="flex flex-wrap items-center gap-2 mb-6" data-testid="text-location">
+            <MapPin className="h-4 w-4 text-accent flex-shrink-0" />
             <span className="text-sm text-muted-foreground">Egerton, Kenya</span>
-            <span className="inline-flex items-center gap-1.5 ml-3 px-2.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium" data-testid="status-availability">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+            <span
+              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium"
+              data-testid="status-availability"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
               Available for hire
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-none" data-testid="text-hero-name">
+          {/* Name */}
+          <h1
+            className="text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-none"
+            data-testid="text-hero-name"
+          >
             Kelvin<br />
             <span className="text-accent">Mukaria</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl leading-relaxed" data-testid="text-hero-tagline">
+          {/* Tagline */}
+          <p
+            className="text-base sm:text-lg md:text-2xl text-muted-foreground mb-6 max-w-2xl leading-relaxed"
+            data-testid="text-hero-tagline"
+          >
             Full-Stack Engineer · Cybersecurity · AI & Automation · Entrepreneur
           </p>
 
-          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-xl leading-relaxed" data-testid="text-hero-description">
+          {/* Description */}
+          <p
+            className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed"
+            data-testid="text-hero-description"
+          >
             I build production-grade web applications, automate workflows with AI, and design
-            systems with security at their core. Computer Science student at Egerton University,
-            shipping real products.
+            systems with security at their core. CS student at Egerton University, shipping
+            real products.
           </p>
 
-          <div className="flex flex-wrap gap-2 mb-10" data-testid="list-domains">
-            {["React", "Node.js", "TypeScript", "Python", "Cybersecurity", "AI Automation", "Flutter", "Firebase"].map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs font-medium" data-testid={`badge-skill-${tag}`}>
-                {tag}
-              </Badge>
-            ))}
+          {/* Skill badges */}
+          <div className="flex flex-wrap gap-2 mb-8" data-testid="list-domains">
+            {["React", "Node.js", "TypeScript", "Python", "Cybersecurity", "AI Automation", "Flutter", "Firebase"].map(
+              (tag) => (
+                <Badge key={tag} variant="secondary" className="text-xs font-medium" data-testid={`badge-skill-${tag}`}>
+                  {tag}
+                </Badge>
+              )
+            )}
           </div>
 
-          <div className="flex flex-wrap gap-4 items-center">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 sm:items-center">
             <Button
               size="lg"
               onClick={() => scrollTo("projects")}
               data-testid="button-view-work"
-              className="gap-2"
+              className="gap-2 w-full sm:w-auto"
             >
               View My Work <ArrowRight className="h-4 w-4" />
             </Button>
@@ -73,17 +93,20 @@ const HeroSection = () => {
               size="lg"
               onClick={() => scrollTo("contact")}
               data-testid="button-get-in-touch"
+              className="w-full sm:w-auto"
             >
               Get in Touch
             </Button>
 
-            <div className="flex items-center gap-3 ml-auto">
+            {/* Social icons row — separate line on mobile */}
+            <div className="flex items-center gap-4 mt-2 sm:mt-0 sm:ml-auto">
               <a
                 href="https://github.com/Kevrollin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-github"
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -93,13 +116,15 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-linkedin"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:kelvinmukaria@example.com"
+                href="mailto:kelvinmukaria@gmail.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-email"
+                aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -110,8 +135,9 @@ const HeroSection = () => {
 
       <a
         href="#about"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
         data-testid="link-scroll-down"
+        aria-label="Scroll down"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 5v14M5 12l7 7 7-7" />

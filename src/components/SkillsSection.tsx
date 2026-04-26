@@ -55,25 +55,38 @@ const SkillsSection = () => {
   const filtered = active === "all" ? skills : skills.filter((s) => s.category === active);
 
   return (
-    <section id="skills" className="py-24 bg-secondary/20 dark:bg-secondary/10">
+    <section id="skills" className="py-16 md:py-24 bg-secondary/20 dark:bg-secondary/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
-          <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4 text-center" data-testid="text-skills-label">
+          <p
+            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-center"
+            data-testid="text-skills-label"
+          >
             Skills
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center mb-4" data-testid="text-skills-heading">
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center mb-3"
+            data-testid="text-skills-heading"
+          >
             What I Work With
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto" data-testid="text-skills-description">
+          <p
+            className="text-center text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto"
+            data-testid="text-skills-description"
+          >
             Technologies and tools I use to build, secure, and automate.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-10" data-testid="list-skill-filters">
+          {/* Filter buttons — scrollable on mobile */}
+          <div
+            className="flex flex-wrap justify-center gap-2 mb-8"
+            data-testid="list-skill-filters"
+          >
             {categories.map((c) => (
               <button
                 key={c.key}
                 onClick={() => setActive(c.key)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-150 ${
+                className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   active === c.key
                     ? "bg-accent text-white shadow-sm"
                     : "bg-background border border-border text-muted-foreground hover:text-foreground hover:border-accent/40"
@@ -85,15 +98,16 @@ const SkillsSection = () => {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-3 justify-center" data-testid="list-skills">
+          {/* Skills grid */}
+          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center" data-testid="list-skills">
             {filtered.map((skill) => (
               <div
                 key={skill.name}
-                className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background hover:border-accent/40 hover:shadow-sm transition-all duration-150"
+                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border bg-background hover:border-accent/40 hover:shadow-sm transition-all duration-150"
                 data-testid={`tag-skill-${skill.name.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`}
               >
-                <span className="text-sm font-medium">{skill.name}</span>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${levelColor[skill.level]}`}>
+                <span className="text-xs sm:text-sm font-medium">{skill.name}</span>
+                <span className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full font-medium ${levelColor[skill.level]}`}>
                   {skill.level}
                 </span>
               </div>
