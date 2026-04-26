@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -48,7 +48,25 @@ const Footer = () => {
               <Twitter className="h-4 w-4" />
             </a>
             <a
-              href="mailto:kelvinmukaria@gmail.com"
+              href="https://wa.me/254757086742"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-testid="link-footer-whatsapp"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle className="h-4 w-4" />
+            </a>
+            <a
+              href="tel:+254117103255"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              data-testid="link-footer-phone"
+              aria-label="Phone"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+            <a
+              href="mailto:kelvinmukaria2023@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-footer-email"
               aria-label="Email"

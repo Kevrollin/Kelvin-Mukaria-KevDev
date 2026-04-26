@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, MapPin, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, MapPin, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -121,12 +121,22 @@ const HeroSection = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:kelvinmukaria@gmail.com"
+                href="mailto:kelvinmukaria2023@gmail.com"
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-email"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
+              </a>
+              <a
+                href="https://wa.me/254757086742"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                data-testid="link-whatsapp"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="h-5 w-5" />
               </a>
             </div>
           </div>

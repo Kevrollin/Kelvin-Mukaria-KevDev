@@ -4,13 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
-import { Github, Linkedin, Mail, MessageCircle, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
 
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com/Kevrollin" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   { icon: Twitter, label: "Twitter / X", href: "https://twitter.com" },
-  { icon: Mail, label: "Email", href: "mailto:kelvinmukaria@gmail.com" },
+  { icon: Mail, label: "Email", href: "mailto:kelvinmukaria2023@gmail.com" },
+  { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/254757086742" },
 ];
 
 const ContactSection = () => {
@@ -173,35 +174,48 @@ const ContactSection = () => {
                   Direct Contact
                 </h3>
                 <div className="space-y-3 text-sm text-muted-foreground">
-                  <p>
-                    <span className="font-medium text-foreground">Email</span>
-                    <br />
-                    <a
-                      href="mailto:kelvinmukaria@gmail.com"
-                      className="hover:text-accent transition-colors break-all"
-                      data-testid="link-email-direct"
-                    >
-                      kelvinmukaria@gmail.com
-                    </a>
-                  </p>
-                  <p>
-                    <span className="font-medium text-foreground">WhatsApp</span>
-                    <br />
-                    <a
-                      href="https://wa.me/254757086742"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-accent transition-colors"
-                      data-testid="link-whatsapp-direct"
-                    >
-                      +254 757 086 742
-                    </a>
-                  </p>
-                  <p>
-                    <span className="font-medium text-foreground">Location</span>
-                    <br />
-                    Kenya
-                  </p>
+                  <div className="flex items-start gap-2">
+                    <Mail className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" />
+                    <div>
+                      <span className="font-medium text-foreground block">Email</span>
+                      <a
+                        href="mailto:kelvinmukaria2023@gmail.com"
+                        className="hover:text-accent transition-colors break-all"
+                        data-testid="link-email-direct"
+                      >
+                        kelvinmukaria2023@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <MessageCircle className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" />
+                    <div>
+                      <span className="font-medium text-foreground block">WhatsApp</span>
+                      <a
+                        href="https://wa.me/254757086742"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-accent transition-colors"
+                        data-testid="link-whatsapp-direct"
+                      >
+                        +254 757 086 742
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" />
+                    <div>
+                      <span className="font-medium text-foreground block">Phone</span>
+                      <a
+                        href="tel:+254117103255"
+                        className="hover:text-accent transition-colors"
+                        data-testid="link-phone-direct"
+                      >
+                        +254 117 103 255
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground pt-1">📍 Kenya (Nakuru / Meru)</p>
                 </div>
               </div>
 
