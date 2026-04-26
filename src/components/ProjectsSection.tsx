@@ -18,6 +18,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 1,
+    name: "Ardena Platform Africa – Car Rental Marketplace",
+    description:
+      "Peer-to-peer car rental platform connecting verified vehicle owners with renters across Kenya. Transparent pricing, seamless booking, and multi-channel access including mobile apps.",
+    tags: ["React", "Node.js", "Mobile Apps", "Fintech", "Kenya"],
+    image: "/ardena.png",
+    demo: "https://ardena.co.ke/",
+    status: "live",
+  },
+  {
     id: 6,
     name: "JamoSec AI – Cybersecurity Platform",
     description:
