@@ -41,6 +41,15 @@ src/
 - EmailJS integration: service_ej3wqaq / template_134wyxx
 - WhatsApp direct link to +254 757 086 742
 
+## SEO
+- Full meta tag suite: title, description, keywords, canonical, Open Graph, Twitter Card
+- Geo/local SEO tags targeting Nakuru, Meru, Kenya (ISO KE-31)
+- JSON-LD structured data: Person, WebSite, Organization (Ardena), BreadcrumbList schemas
+- `public/robots.txt` — allows all bots, references sitemap
+- `public/sitemap.xml` — all sections with images and lastmod dates
+- `vercel.json` — SPA rewrites + security headers + asset cache headers
+- Target domain: `https://kelvinmukaria.vercel.app`
+
 ## Running
 ```bash
 npm run dev    # Dev server on port 5000

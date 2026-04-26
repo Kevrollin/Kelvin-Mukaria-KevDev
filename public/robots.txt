@@ -1,5 +1,10 @@
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
@@ -10,5 +15,7 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
+
+Sitemap: https://kelvinmukaria.vercel.app/sitemap.xml
