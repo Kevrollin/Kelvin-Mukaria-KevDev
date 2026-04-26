@@ -36,7 +36,7 @@ const HeroSection = () => {
               data-testid="status-availability"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-              Available for hire
+              Open for collaboration
             </span>
           </div>
 

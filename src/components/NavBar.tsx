@@ -41,7 +41,12 @@ const NavBar = () => {
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-16">
-            <a href="#" className="font-bold text-lg tracking-tight" data-testid="link-logo">
+            <a href="#" className="flex items-center gap-2.5 font-bold text-lg tracking-tight" data-testid="link-logo">
+              <img
+                src="/kelvin-avatar.png"
+                alt="Kelvin Mukaria"
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-accent/30"
+              />
               Kelvin<span className="text-accent">.</span>
             </a>
 
