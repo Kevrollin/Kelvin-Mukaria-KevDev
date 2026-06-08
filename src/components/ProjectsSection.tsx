@@ -82,6 +82,26 @@ const projects: Project[] = [
     status: "live",
   },
   {
+    id: 10,
+    name: "Gerusabejo Building & Construction Company",
+    description:
+      "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
+    tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
+    image: "/gerusabejo.png",
+    demo: "https://www.gerusabejoconstruction.com/",
+    status: "live",
+  },
+  {
+    id: 11,
+    name: "Tucha's Auto Spares",
+    description:
+      "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
+    tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
+    image: "/tuchas.png",
+    demo: "https://www.tuchasautospares.com/",
+    status: "live",
+  },
+  {
     id: 8,
     name: "Caffeinated Thoughts – Tech Blog",
     description:
