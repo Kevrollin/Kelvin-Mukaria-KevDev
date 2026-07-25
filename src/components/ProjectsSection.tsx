@@ -18,16 +18,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 12,
-    name: "Hicacy Destinations – Purpose-Led Travel in Western Kenya",
-    description:
-      "Community-led travel platform for discovering Western Kenya — from Kakamega Forest and Mt. Elgon to Ruma National Park and Ndere Island. Each trip supports regenerative agriculture and local community projects.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Framer Motion"],
-    image: "/hicacy.webp",
-    demo: "https://hicacy.com/",
-    status: "live",
-  },
-  {
     id: 1,
     name: "Ardena Platform Africa – Car Rental Marketplace",
     description:
@@ -39,12 +29,42 @@ const projects: Project[] = [
   },
   {
     id: 2,
+    name: "Hicacy Destinations – Purpose-Led Travel in Western Kenya",
+    description:
+      "Community-led travel platform for discovering Western Kenya — from Kakamega Forest and Mt. Elgon to Ruma National Park and Ndere Island. Each trip supports regenerative agriculture and local community projects.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Framer Motion"],
+    image: "/hicacy.webp",
+    demo: "https://hicacy.com/",
+    status: "live",
+  },
+  {
+    id: 3,
     name: "DPPM Ltd – Dairy Processing & Packaging Machines",
     description:
       "Corporate website for Dairy Processing and Packaging Machines Ltd — a leading Kenyan provider of dairy machinery supply, installation, and commissioning services.",
     tags: ["React", "Tailwind CSS", "Vite", "Corporate"],
     image: "/dppm.webp",
     demo: "https://dppmltd.com/",
+    status: "live",
+  },
+  {
+    id: 4,
+    name: "Gerusabejo Building & Construction Company",
+    description:
+      "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
+    tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
+    image: "/gerusabejo.webp",
+    demo: "https://www.gerusabejoconstruction.com/",
+    status: "live",
+  },
+  {
+    id: 5,
+    name: "Tucha's Auto Spares",
+    description:
+      "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
+    tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
+    image: "/tuchas.webp",
+    demo: "https://www.tuchasautospares.com/",
     status: "live",
   },
   {
@@ -59,7 +79,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 3,
+    id: 7,
     name: "MK GitPilot – Developer Automation Tool",
     description:
       "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
@@ -70,7 +90,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 4,
+    id: 8,
     name: "PatchNotes – Release & Dev Blog Platform",
     description:
       "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
@@ -81,7 +101,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 7,
+    id: 9,
     name: "Palinesco – Construction Company Website",
     description:
       "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
@@ -93,26 +113,6 @@ const projects: Project[] = [
   },
   {
     id: 10,
-    name: "Gerusabejo Building & Construction Company",
-    description:
-      "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
-    tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
-    image: "/gerusabejo.webp",
-    demo: "https://www.gerusabejoconstruction.com/",
-    status: "live",
-  },
-  {
-    id: 11,
-    name: "Tucha's Auto Spares",
-    description:
-      "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
-    tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
-    image: "/tuchas.webp",
-    demo: "https://www.tuchasautospares.com/",
-    status: "live",
-  },
-  {
-    id: 8,
     name: "Caffeinated Thoughts – Tech Blog",
     description:
       "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
@@ -123,13 +123,14 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 9,
+    id: 11,
     name: "Transport Booking – Matatu App",
     description:
       "Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets. Flutter + Firebase.",
     tags: ["Flutter", "Firebase", "Google Maps API"],
     image: "https://images.unsplash.com/photo-1592853598064-a829ed372c0c?auto=format&fit=crop&w=600&h=400&q=80",
     github: "https://github.com/Kevrollin",
+    demo: "https://transport-booking-matatu-app.vercel.app/",
     status: "beta",
   },
 ];
@@ -148,9 +149,7 @@ const statusColors: Record<Project["status"], string> = {
 const ProjectsSection = () => {
   const [active, setActive] = useState<Status>("all");
 
-  const filtered = (active === "all" ? [...projects] : projects.filter((p) => p.status === active)).sort(
-    (a, b) => a.id - b.id,
-  );
+  const filtered = active === "all" ? projects : projects.filter((p) => p.status === active);
 
   return (
     <section id="projects" className="py-16 md:py-24 bg-background">
