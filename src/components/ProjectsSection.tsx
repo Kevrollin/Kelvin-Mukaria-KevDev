@@ -148,7 +148,9 @@ const statusColors: Record<Project["status"], string> = {
 const ProjectsSection = () => {
   const [active, setActive] = useState<Status>("all");
 
-  const filtered = active === "all" ? projects : projects.filter((p) => p.status === active);
+  const filtered = (active === "all" ? [...projects] : projects.filter((p) => p.status === active)).sort(
+    (a, b) => a.id - b.id,
+  );
 
   return (
     <section id="projects" className="py-16 md:py-24 bg-background">
