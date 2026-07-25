@@ -67,15 +67,15 @@ const AboutSection = () => {
               {/* Stats */}
               <div className="mt-8 grid grid-cols-3 gap-4" data-testid="list-stats">
                 <div className="text-center sm:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-projects">8+</div>
+                  <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-projects">20+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Live Projects</div>
                 </div>
                 <div className="text-center sm:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-domains">4</div>
+                  <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-domains">16</div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Core Domains</div>
                 </div>
                 <div className="text-center sm:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-stacks">10+</div>
+                  <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-stacks">12+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Technologies</div>
                 </div>
               </div>
