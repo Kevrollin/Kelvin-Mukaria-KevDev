@@ -45,6 +45,9 @@ const NavBar = () => {
               <img
                 src="/kelvin-avatar.png"
                 alt="Kelvin Mukaria"
+                width={32}
+                height={32}
+                decoding="async"
                 className="w-8 h-8 rounded-full object-cover ring-2 ring-accent/30"
               />
               Kelvin<span className="text-accent">.</span>

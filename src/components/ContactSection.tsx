@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
 import { Github, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
 
 const socials = [
@@ -26,25 +25,26 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    emailjs
-      .send(
+    try {
+      const { default: emailjs } = await import("@emailjs/browser");
+      await emailjs.send(
         "service_ej3wqaq",
         "template_134wyxx",
         { from_name: form.name, from_email: form.email, subject: form.subject, message: form.message },
         "OEzF15RYCvBQI8hwR"
-      )
-      .then(() => {
+      );
+
         toast({ title: "Message sent", description: "Thanks! I'll get back to you shortly." });
         setForm({ name: "", email: "", subject: "", message: "" });
-      })
-      .catch(() => {
-        toast({
-          title: "Failed to send",
-          description: "Something went wrong. Try WhatsApp or email directly.",
-          variant: "destructive",
-        });
-      })
-      .finally(() => setSending(false));
+    } catch {
+      toast({
+        title: "Failed to send",
+        description: "Something went wrong. Try WhatsApp or email directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const sendWhatsApp = () => {
