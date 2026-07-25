@@ -17,63 +17,68 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
+   {
     id: 1,
     name: "Ardena Platform Africa – Car Rental Marketplace",
     description:
       "Peer-to-peer car rental platform connecting verified vehicle owners with renters across Kenya. Transparent pricing, seamless booking, and multi-channel access including mobile apps.",
     tags: ["React", "Node.js", "Mobile Apps", "Fintech", "Kenya"],
-    image: "/ardena.webp",
+    image: "/ardena.png",
     demo: "https://ardena.co.ke/",
     status: "live",
   },
+
   {
     id: 2,
     name: "Hicacy Destinations – Purpose-Led Travel in Western Kenya",
     description:
       "Community-led travel platform for discovering Western Kenya — from Kakamega Forest and Mt. Elgon to Ruma National Park and Ndere Island. Each trip supports regenerative agriculture and local community projects.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Framer Motion"],
-    image: "/hicacy.webp",
+    image: "/hicacy.png",
     demo: "https://hicacy.com/",
     status: "live",
   },
+ 
   {
     id: 3,
     name: "DPPM Ltd – Dairy Processing & Packaging Machines",
     description:
       "Corporate website for Dairy Processing and Packaging Machines Ltd — a leading Kenyan provider of dairy machinery supply, installation, and commissioning services.",
     tags: ["React", "Tailwind CSS", "Vite", "Corporate"],
-    image: "/dppm.webp",
+    image: "/dppm.png",
     demo: "https://dppmltd.com/",
     status: "live",
   },
+
   {
     id: 4,
     name: "Gerusabejo Building & Construction Company",
     description:
       "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
     tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
-    image: "/gerusabejo.webp",
+    image: "/gerusabejo.png",
     demo: "https://www.gerusabejoconstruction.com/",
     status: "live",
   },
+  
   {
     id: 5,
     name: "Tucha's Auto Spares",
     description:
       "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
     tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
-    image: "/tuchas.webp",
+    image: "/tuchas.png",
     demo: "https://www.tuchasautospares.com/",
     status: "live",
   },
+
   {
     id: 6,
     name: "JamoSec AI – Cybersecurity Platform",
     description:
       "AI-powered platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
     tags: ["AI", "Cybersecurity", "React", "Node.js", "Python", "Supabase"],
-    image: "/jambosec.webp",
+    image: "/jambosec.png",
     github: "https://github.com/Kevrollin",
     demo: "https://jambosecaiio.vercel.app/",
     status: "live",
@@ -84,7 +89,7 @@ const projects: Project[] = [
     description:
       "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
     tags: ["Python", "Node.js", "React", "Supabase"],
-    image: "/mkgitpilot.webp",
+    image: "/mkgitpilot.png",
     github: "https://github.com/Kevrollin",
     demo: "http://mkgitpilot-dev.vercel.app/",
     status: "live",
@@ -95,7 +100,7 @@ const projects: Project[] = [
     description:
       "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
     tags: ["Next.js", "Supabase", "Tailwind CSS", "MDX"],
-    image: "/patchnotes.webp",
+    image: "/patchnotes.png",
     github: "https://github.com/Kevrollin",
     demo: "https://patch-notes-dev.vercel.app/",
     status: "live",
@@ -106,18 +111,19 @@ const projects: Project[] = [
     description:
       "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
     tags: ["React", "shadcn/ui", "Tailwind CSS", "Vite"],
-    image: "/palinesco-overview-site.webp",
+    image: "/palinesco-overview-site.JPG",
     github: "https://github.com/Kevrollin/palinesco-plan-build-company",
     demo: "https://palinesco-plan-build-company.vercel.app/",
     status: "live",
   },
+  
   {
     id: 10,
     name: "Caffeinated Thoughts – Tech Blog",
     description:
       "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
     tags: ["React", "shadcn/ui", "Tailwind CSS", "M-Pesa API"],
-    image: "/caffeinated-thoughts.webp",
+    image: "/caffeinated-thoughts.png",
     github: "https://github.com/Kevrollin/caffeinated-thoughts-alpha",
     demo: "https://caffeinated-thoughts-alpha.vercel.app/",
     status: "live",
@@ -204,11 +210,6 @@ const ProjectsSection = () => {
                   <img
                     src={project.image}
                     alt={project.name}
-                    width={960}
-                    height={560}
-                    loading="lazy"
-                    decoding="async"
-                    sizes="(min-width: 1024px) 31vw, (min-width: 640px) 47vw, 92vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =
