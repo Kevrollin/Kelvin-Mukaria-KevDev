@@ -52,6 +52,28 @@ const projects: Project[] = [
 
   {
     id: 4,
+    name: "Randa Construction Enterprise",
+    description:
+      "Building construction contractor based in Nakuru, Kenya, working across residential, commercial, and industrial construction, roofing, renovation, and project management services.",
+    tags: ["React", "Vite", "Tailwind CSS", "Construction", "Kenya"],
+    image: "/randa.png",
+    demo: "https://rcepreview.vercel.app",
+    status: "live",
+  },
+
+  {
+    id: 5,
+    name: "Dalmas Creations – Media, Storytelling & Digital Influence",
+    description:
+      "Nairobi-based media and storytelling company helping ambitious brands connect with the audiences that matter through strategic storytelling, media production, and influence.",
+    tags: ["Next.js", "Tailwind CSS", "Media", "Kenya"],
+    image: "/dalmas.png",
+    demo: "https://dalmascreationsdemo.vercel.app/",
+    status: "live",
+  },
+
+  {
+    id: 6,
     name: "Gerusabejo Building & Construction Company",
     description:
       "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
@@ -60,9 +82,9 @@ const projects: Project[] = [
     demo: "https://www.gerusabejoconstruction.com/",
     status: "live",
   },
-  
+
   {
-    id: 5,
+    id: 7,
     name: "Tucha's Auto Spares",
     description:
       "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
@@ -73,7 +95,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 6,
+    id: 8,
     name: "JamoSec AI – Cybersecurity Platform",
     description:
       "AI-powered platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
@@ -84,7 +106,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 7,
+    id: 9,
     name: "MK GitPilot – Developer Automation Tool",
     description:
       "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
@@ -95,7 +117,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 8,
+    id: 10,
     name: "PatchNotes – Release & Dev Blog Platform",
     description:
       "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
@@ -106,7 +128,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 9,
+    id: 11,
     name: "Palinesco – Construction Company Website",
     description:
       "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
@@ -116,9 +138,9 @@ const projects: Project[] = [
     demo: "https://palinesco-plan-build-company.vercel.app/",
     status: "live",
   },
-  
+
   {
-    id: 10,
+    id: 12,
     name: "Caffeinated Thoughts – Tech Blog",
     description:
       "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
@@ -129,7 +151,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 11,
+    id: 13,
     name: "Transport Booking – Matatu App",
     description:
       "Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets. Flutter + Firebase.",
