@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-background" data-testid="footer">
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-10">
-        <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-          <div className="text-center sm:text-left">
+        <div className="flex flex-col items-start gap-5 sm:flex-row sm:justify-between sm:items-center">
+          <div className="text-left">
             <a href="#" className="font-bold text-lg tracking-tight" data-testid="link-footer-logo">
               Kelvin<span className="text-accent">.</span>
             </a>
@@ -75,7 +75,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <p className="text-xs text-muted-foreground text-center sm:text-right" data-testid="text-copyright">
+          <p className="text-xs text-muted-foreground text-left sm:text-right" data-testid="text-copyright">
             © {year} Kelvin Mukaria
           </p>
         </div>

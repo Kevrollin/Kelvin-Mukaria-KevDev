@@ -184,26 +184,26 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <p
-            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-center"
+            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-left"
             data-testid="text-projects-label"
           >
             Work
           </p>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center mb-3"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-left mb-3"
             data-testid="text-projects-heading"
           >
             Selected Projects
           </h2>
           <p
-            className="text-center text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto"
+            className="text-left text-sm sm:text-base text-muted-foreground mb-10 max-w-xl"
             data-testid="text-projects-description"
           >
             Real products I've built, shipped, and maintain.
           </p>
 
           {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8" data-testid="list-project-filters">
+          <div className="flex flex-wrap justify-start gap-2 mb-8" data-testid="list-project-filters">
             {filters.map((f) => (
               <button
                 key={f.key}
@@ -315,7 +315,7 @@ const ProjectsSection = () => {
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-left mt-10">
             <Button variant="outline" size="lg" asChild data-testid="button-view-all-github">
               <a
                 href="https://github.com/Kevrollin"

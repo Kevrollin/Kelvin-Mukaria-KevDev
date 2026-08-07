@@ -3,7 +3,7 @@ import { GraduationCap, Code2, Shield, Cpu } from "lucide-react";
 const pillars = [
   {
     icon: Code2,
-    title: "Full-Stack Engineering",
+    title: "Software Engineering",
     description:
       "End-to-end web and mobile apps. Pixel-perfect frontends with React to robust Node.js backends, REST APIs, and real-time databases.",
   },
@@ -45,7 +45,7 @@ const AboutSection = () => {
                 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5 leading-tight"
                 data-testid="text-about-heading"
               >
-                Engineer. Builder.<br />Entrepreneur.
+                Engineer.<br />Entrepreneur.
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed" data-testid="text-about-body">
                 <p>
@@ -66,15 +66,15 @@ const AboutSection = () => {
 
               {/* Stats */}
               <div className="mt-8 grid grid-cols-3 gap-4" data-testid="list-stats">
-                <div className="text-center sm:text-left">
+                <div className="text-left">
                   <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-projects">20+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Live Projects</div>
                 </div>
-                <div className="text-center sm:text-left">
+                <div className="text-left">
                   <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-domains">16</div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Core Domains</div>
                 </div>
-                <div className="text-center sm:text-left">
+                <div className="text-left">
                   <div className="text-2xl sm:text-3xl font-bold" data-testid="stat-stacks">12+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Technologies</div>
                 </div>
