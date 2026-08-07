@@ -57,7 +57,7 @@ const projects: Project[] = [
       "Building construction contractor based in Nakuru, Kenya, working across residential, commercial, and industrial construction, roofing, renovation, and project management services.",
     tags: ["React", "Vite", "Tailwind CSS", "Construction", "Kenya"],
     image: "/randa.png",
-    demo: "https://rcepreview.vercel.app",
+    demo: "https://randaenterprise.co.ke",
     status: "live",
   },
 
