@@ -23,7 +23,7 @@ const projects: Project[] = [
     description:
       "Peer-to-peer car rental platform connecting verified vehicle owners with renters across Kenya. Transparent pricing, seamless booking, and multi-channel access including mobile apps.",
     tags: ["React", "Node.js", "Mobile Apps", "Fintech", "Kenya"],
-    image: "/ardena.png",
+    image: "/ardena.webp",
     demo: "https://ardena.co.ke/",
     status: "live",
   },
@@ -34,7 +34,7 @@ const projects: Project[] = [
     description:
       "Community-led travel platform for discovering Western Kenya — from Kakamega Forest and Mt. Elgon to Ruma National Park and Ndere Island. Each trip supports regenerative agriculture and local community projects.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Framer Motion"],
-    image: "/hicacy.png",
+    image: "/hicacy.webp",
     demo: "https://hicacy.com/",
     status: "live",
   },
@@ -45,7 +45,7 @@ const projects: Project[] = [
     description:
       "Corporate website for Dairy Processing and Packaging Machines Ltd — a leading Kenyan provider of dairy machinery supply, installation, and commissioning services.",
     tags: ["React", "Tailwind CSS", "Vite", "Corporate"],
-    image: "/dppm.png",
+    image: "/dppm.webp",
     demo: "https://dppmltd.com/",
     status: "live",
   },
@@ -56,7 +56,7 @@ const projects: Project[] = [
     description:
       "Youth-led environmental research and conservation organisation working with communities, researchers, and governments to protect and restore Africa's ecosystems.",
     tags: ["React", "Vite", "Tailwind CSS", "Conservation", "Non-Profit", "Africa"],
-    image: "/atei.png",
+    image: "/atei.webp",
     demo: "https://www.atei.africa",
     status: "live",
   },
@@ -67,7 +67,7 @@ const projects: Project[] = [
     description:
       "Building construction contractor based in Nakuru, Kenya, working across residential, commercial, and industrial construction, roofing, renovation, and project management services.",
     tags: ["React", "Vite", "Tailwind CSS", "Construction", "Kenya"],
-    image: "/randa.png",
+    image: "/randa.webp",
     demo: "https://randaenterprise.co.ke",
     status: "live",
   },
@@ -78,7 +78,7 @@ const projects: Project[] = [
     description:
       "Nairobi-based media and storytelling company helping ambitious brands connect with the audiences that matter through strategic storytelling, media production, and influence.",
     tags: ["Next.js", "Tailwind CSS", "Media", "Kenya"],
-    image: "/dalmas.png",
+    image: "/dalmas.webp",
     demo: "https://dalmascreationsdemo.vercel.app/",
     status: "live",
   },
@@ -89,7 +89,7 @@ const projects: Project[] = [
     description:
       "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
     tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
-    image: "/gerusabejo.png",
+    image: "/gerusabejo.webp",
     demo: "https://www.gerusabejoconstruction.com/",
     status: "live",
   },
@@ -100,7 +100,7 @@ const projects: Project[] = [
     description:
       "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
     tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
-    image: "/tuchas.png",
+    image: "/tuchas.webp",
     demo: "https://www.tuchasautospares.com/",
     status: "live",
   },
@@ -111,7 +111,7 @@ const projects: Project[] = [
     description:
       "AI-powered platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
     tags: ["AI", "Cybersecurity", "React", "Node.js", "Python", "Supabase"],
-    image: "/jambosec.png",
+    image: "/jambosec.webp",
     github: "https://github.com/Kevrollin",
     demo: "https://jambosecaiio.vercel.app/",
     status: "live",
@@ -122,7 +122,7 @@ const projects: Project[] = [
     description:
       "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
     tags: ["Python", "Node.js", "React", "Supabase"],
-    image: "/mkgitpilot.png",
+    image: "/mkgitpilot.webp",
     github: "https://github.com/Kevrollin",
     demo: "http://mkgitpilot-dev.vercel.app/",
     status: "live",
@@ -133,7 +133,7 @@ const projects: Project[] = [
     description:
       "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
     tags: ["Next.js", "Supabase", "Tailwind CSS", "MDX"],
-    image: "/patchnotes.png",
+    image: "/patchnotes.webp",
     github: "https://github.com/Kevrollin",
     demo: "https://patch-notes-dev.vercel.app/",
     status: "live",
@@ -144,7 +144,7 @@ const projects: Project[] = [
     description:
       "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
     tags: ["React", "shadcn/ui", "Tailwind CSS", "Vite"],
-    image: "/palinesco-overview-site.JPG",
+    image: "/palinesco-overview-site.webp",
     github: "https://github.com/Kevrollin/palinesco-plan-build-company",
     demo: "https://palinesco-plan-build-company.vercel.app/",
     status: "live",
@@ -156,7 +156,7 @@ const projects: Project[] = [
     description:
       "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
     tags: ["React", "shadcn/ui", "Tailwind CSS", "M-Pesa API"],
-    image: "/caffeinated-thoughts.png",
+    image: "/caffeinated-thoughts.webp",
     github: "https://github.com/Kevrollin/caffeinated-thoughts-alpha",
     demo: "https://caffeinated-thoughts-alpha.vercel.app/",
     status: "live",
@@ -242,7 +242,9 @@ const ProjectsSection = () => {
                 <div className="relative aspect-video overflow-hidden bg-secondary/30 flex-shrink-0">
                   <img
                     src={project.image}
-                    alt={project.name}
+                    alt={`${project.name} — screenshot of the live site`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =

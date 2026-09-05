@@ -1,0 +1,16 @@
+{
+  "name": "Kelvin Mukaria — Software Engineer Kenya",
+  "short_name": "Kelvin Mukaria",
+  "description": "Portfolio of Kelvin Mukaria, Software Engineer and AI & Automation Builder based in Kenya.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcfcfc",
+  "theme_color": "#fcfcfc",
+  "icons": [
+    {
+      "src": "/kelvin-avatar.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    }
+  ]
+}

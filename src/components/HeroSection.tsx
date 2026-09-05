@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, MapPin, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, Download, MapPin, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -98,6 +98,22 @@ const HeroSection = () => {
               >
                 Get in Touch
               </Button>
+              <Button
+                variant="ghost"
+                size="lg"
+                asChild
+                data-testid="button-download-resume"
+                className="w-full sm:w-auto gap-2"
+              >
+                <a
+                  href="/Kelvin_Mukaria_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                >
+                  Resume <Download className="h-4 w-4" />
+                </a>
+              </Button>
 
               {/* Social icons row — separate line on mobile */}
               <div className="flex items-center gap-4 mt-2 sm:mt-0 sm:ml-auto">
@@ -112,7 +128,7 @@ const HeroSection = () => {
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/kelvin-mukaria-mk-98008b230"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -122,7 +138,7 @@ const HeroSection = () => {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="mailto:kelvinmukaria2023@gmail.com"
+                  href="mailto:kelvincodes25@gmail.com"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-email"
                   aria-label="Email"

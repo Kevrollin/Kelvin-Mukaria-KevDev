@@ -16,6 +16,8 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const resumeHref = "/Kelvin_Mukaria_Resume.pdf";
+
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -64,12 +66,22 @@ const NavBar = () => {
                   {l.label}
                 </a>
               ))}
+              <a
+                href={resumeHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                data-testid="link-nav-resume"
+              >
+                Resume
+              </a>
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle">
+                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle" aria-label="Toggle color theme">
                     <ThemeIcon className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -98,7 +110,7 @@ const NavBar = () => {
             <div className="flex md:hidden items-center gap-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle-mobile">
+                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle-mobile" aria-label="Toggle color theme">
                     <ThemeIcon className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -119,6 +131,8 @@ const NavBar = () => {
                 size="icon"
                 onClick={() => setMenuOpen(!menuOpen)}
                 data-testid="button-mobile-menu"
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={menuOpen}
               >
                 {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
@@ -136,6 +150,7 @@ const NavBar = () => {
           className="absolute top-5 right-5"
           onClick={closeMenu}
           data-testid="button-close-mobile-menu"
+          aria-label="Close menu"
         >
           <X className="h-6 w-6" />
         </button>
@@ -150,6 +165,17 @@ const NavBar = () => {
             {l.label}
           </a>
         ))}
+        <a
+          href={resumeHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          onClick={closeMenu}
+          className="text-2xl font-semibold hover:text-accent transition-colors"
+          data-testid="link-mobile-resume"
+        >
+          Resume
+        </a>
         <Button
           size="lg"
           className="mt-4 w-40"

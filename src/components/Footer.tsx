@@ -28,7 +28,7 @@ const Footer = () => {
               <Github className="h-4 w-4" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/kelvin-mukaria-mk-98008b230"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -38,7 +38,7 @@ const Footer = () => {
               <Linkedin className="h-4 w-4" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/kelvinmukariaa"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -66,7 +66,7 @@ const Footer = () => {
               <Phone className="h-4 w-4" />
             </a>
             <a
-              href="mailto:kelvinmukaria2023@gmail.com"
+              href="mailto:kelvincodes25@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-footer-email"
               aria-label="Email"

@@ -7,9 +7,9 @@ import { Github, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-re
 
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com/Kevrollin" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Twitter, label: "Twitter / X", href: "https://twitter.com" },
-  { icon: Mail, label: "Email", href: "mailto:kelvinmukaria2023@gmail.com" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/kelvin-mukaria-mk-98008b230" },
+  { icon: Twitter, label: "Twitter / X", href: "https://x.com/kelvinmukariaa" },
+  { icon: Mail, label: "Email", href: "mailto:kelvincodes25@gmail.com" },
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/254757086742" },
 ];
 
@@ -179,11 +179,11 @@ const ContactSection = () => {
                     <div>
                       <span className="font-medium text-foreground block">Email</span>
                       <a
-                        href="mailto:kelvinmukaria2023@gmail.com"
+                        href="mailto:kelvincodes25@gmail.com"
                         className="hover:text-accent transition-colors break-all"
                         data-testid="link-email-direct"
                       >
-                        kelvinmukaria2023@gmail.com
+                        kelvincodes25@gmail.com
                       </a>
                     </div>
                   </div>
