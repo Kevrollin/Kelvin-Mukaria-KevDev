@@ -1,56 +1,39 @@
-
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
-  const location = useLocation();
+  const path = window.location.pathname;
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
+    document.title = "Page not found | Kelvin Mukaria";
+    // The SPA answers every path with 200, so tell crawlers not to index this soft 404.
+    document.querySelector('meta[name="robots"]')?.setAttribute("content", "noindex, follow");
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+    <main className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="w-full max-w-lg">
-        <div className="text-center mb-8">
-          <h1 className="text-7xl font-jetbrains font-bold mb-6">
-            <span className="text-destructive">4</span>
-            <span className="text-accent">0</span>
-            <span className="text-destructive">4</span>
-          </h1>
-          
-          <div className="font-jetbrains text-lg mb-4 bg-secondary p-4 rounded-md">
-            <div className="text-left">
-              <div className="text-primary mb-2">{"> ERROR"}</div>
-              <div className="text-muted-foreground">
-                Page not found. Probably debugging in production.
-              </div>
-              <div className="text-muted-foreground">
-                <span className="blink">_</span>
-              </div>
-            </div>
+        <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-3">Error 404</p>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">Page not found</h1>
+        <p className="text-sm sm:text-base text-muted-foreground mb-8 leading-relaxed">
+          The page you're looking for doesn't exist or has moved.
+        </p>
+
+        <div className="font-mono text-xs sm:text-sm bg-secondary rounded-lg p-4 mb-8 overflow-x-auto" aria-hidden="true">
+          <div className="whitespace-nowrap">
+            <span className="text-accent">$</span> cd {path}
           </div>
-          
-          <div className="mb-8">
-            <img 
-              src="https://media.giphy.com/media/xTiN0L7EW5trfOvEk0/giphy.gif" 
-              alt="Frustrated developer" 
-              className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
-            />
-          </div>
-          
-          <Button size="lg">
-            <a href="/" className="flex items-center">
-              Return to Home
-            </a>
-          </Button>
+          <div className="text-muted-foreground whitespace-nowrap">cd: no such file or directory</div>
         </div>
+
+        <Button asChild size="lg" className="gap-2">
+          <a href="/">
+            <ArrowLeft className="h-4 w-4" /> Back to home
+          </a>
+        </Button>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -99,6 +99,7 @@
 [link-jambosec-live]: https://jambosecaiio.vercel.app/
 [link-gitpilot-live]: http://mkgitpilot-dev.vercel.app/
 [link-hicacy-live]: https://hicacy.com/
+[link-tumana-live]: https://tumana.store/
 
 <!-- More-projects links -->
 [link-dppm-live]: https://dppmltd.com/
@@ -109,7 +110,6 @@
 [link-palinesco-src]: https://github.com/Kevrollin/palinesco-plan-build-company
 [link-caffeinated-live]: https://caffeinated-thoughts-alpha.vercel.app/
 [link-caffeinated-src]: https://github.com/Kevrollin/caffeinated-thoughts-alpha
-[link-matatu-live]: https://transport-booking-matatu-app.vercel.app/
 
 <!-- GitHub analytics — username: Kevrollin -->
 [img-stats]: https://github-readme-stats.vercel.app/api?username=Kevrollin&show_icons=true&hide_border=true&bg_color=0D1117&title_color=06B6D4&icon_color=6366F1&text_color=CBD5E1&ring_color=6366F1
@@ -290,6 +290,15 @@ Community-led travel platform for discovering Western Kenya — Kakamega Forest,
 - **Engineering highlights:** fully typed, animated frontend; content architecture built to scale across destinations; trip proceeds tied to regenerative agriculture and community projects.
 - [Live Platform ↗][link-hicacy-live]
 
+### [Tumana — Local Marketplace & Errands][link-tumana-live]
+
+Multi-vendor marketplace and errands platform for Kenya: shop trusted local businesses, pay with M-Pesa, and track delivery to your door.
+
+- **Problem solved:** small local businesses lacked an easy way to sell online and get paid, and shoppers had no single place to order from nearby shops — or to get something that isn't listed anywhere.
+- **Stack:** React · Supabase · M-Pesa · TanStack Query · PWA
+- **Engineering highlights:** customer, vendor, and admin experiences in one app; Supabase realtime for live updates; vendor dashboards with payouts; route-level code splitting and an installable PWA for fast loads on mobile data.
+- [Live Platform ↗][link-tumana-live]
+
 <details>
 <summary><strong>More projects</strong> — client and product work (7)</summary>
 
@@ -303,7 +312,7 @@ Community-led travel platform for discovering Western Kenya — Kakamega Forest,
 | **PatchNotes** | Developer platform for publishing patch notes, product updates, and long-form technical writing | Next.js · Supabase · Tailwind CSS · MDX | [Live ↗][link-patchnotes-live] |
 | **Palinesco** | Site for a Meru-based construction company — services, projects, client contact portal | React · shadcn/ui · Tailwind CSS · Vite | [Live ↗][link-palinesco-live] · [Source ↗][link-palinesco-src] |
 | **Caffeinated Thoughts** | Personal tech blog with an M-Pesa Daraja API-integrated "Buy Me a Coffee" flow | React · shadcn/ui · Tailwind CSS · M-Pesa API | [Live ↗][link-caffeinated-live] · [Source ↗][link-caffeinated-src] |
-| **Transport Booking — Matatu App** *(beta)* | Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets | Flutter · Firebase · Google Maps API | [Live ↗][link-matatu-live] |
+| **Transport Booking — Matatu App** *(beta)* | Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets | Flutter · Firebase · Google Maps API | — |
 
 </details>
 

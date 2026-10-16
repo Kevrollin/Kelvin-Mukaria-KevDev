@@ -163,10 +163,20 @@
     </script>
 
     <!-- ===================== PERFORMANCE HINTS ===================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-    <link rel="dns-prefetch" href="https://ardena.co.ke" />
+    <!-- Self-hosted variable Inter (one file, all weights): no third-party, render-blocking font CSS -->
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Apply the saved theme before first paint so dark-mode visitors don't see a white flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("kev-theme");
+          if (t === "dark" || (t === "system" && matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/kelvin-avatar.png" />
@@ -180,6 +190,12 @@
 
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="font-family: system-ui, sans-serif; padding: 2rem; text-align: center">
+        Kelvin Mukaria — Software Engineer &amp; AI Builder, Kenya. This portfolio needs JavaScript;
+        reach me at <a href="mailto:kelvincodes25@gmail.com">kelvincodes25@gmail.com</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

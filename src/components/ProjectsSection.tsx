@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 type Status = "all" | "live" | "beta";
 
 interface Project {
-  id: number;
+  /** Stable slug — used for React keys and test ids, so reordering never changes them. */
+  id: string;
   name: string;
   description: string;
   tags: string[];
@@ -16,9 +17,10 @@ interface Project {
   status: "live" | "beta";
 }
 
+// Display order is array order.
 const projects: Project[] = [
-   {
-    id: 1,
+  {
+    id: "ardena",
     name: "Ardena Platform Africa – Car Rental Marketplace",
     description:
       "Peer-to-peer car rental platform connecting verified vehicle owners with renters across Kenya. Transparent pricing, seamless booking, and multi-channel access including mobile apps.",
@@ -29,7 +31,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 2,
+    id: "hicacy",
     name: "Hicacy Destinations – Purpose-Led Travel in Western Kenya",
     description:
       "Community-led travel platform for discovering Western Kenya — from Kakamega Forest and Mt. Elgon to Ruma National Park and Ndere Island. Each trip supports regenerative agriculture and local community projects.",
@@ -40,7 +42,7 @@ const projects: Project[] = [
   },
  
   {
-    id: 3,
+    id: "dppm",
     name: "DPPM Ltd – Dairy Processing & Packaging Machines",
     description:
       "Corporate website for Dairy Processing and Packaging Machines Ltd — a leading Kenyan provider of dairy machinery supply, installation, and commissioning services.",
@@ -51,7 +53,18 @@ const projects: Project[] = [
   },
 
   {
-    id: 4,
+    id: "tumana",
+    name: "Tumana – Local Marketplace & Errands",
+    description:
+      "Multi-vendor marketplace and errands platform for Kenya. Shop trusted local businesses, pay with M-Pesa, and track delivery to your door in real time — with vendor dashboards, payouts, and admin tooling built in.",
+    tags: ["React", "Supabase", "M-Pesa", "PWA", "TanStack Query", "Realtime"],
+    image: "/tumana.webp",
+    demo: "https://tumana.store/",
+    status: "live",
+  },
+
+  {
+    id: "atei",
     name: "ATEI – Africa Transformative Ecosystem Initiative",
     description:
       "Youth-led environmental research and conservation organisation working with communities, researchers, and governments to protect and restore Africa's ecosystems.",
@@ -62,7 +75,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 5,
+    id: "randa",
     name: "Randa Construction Enterprise",
     description:
       "Building construction contractor based in Nakuru, Kenya, working across residential, commercial, and industrial construction, roofing, renovation, and project management services.",
@@ -73,7 +86,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 6,
+    id: "dalmas",
     name: "Dalmas Creations – Media, Storytelling & Digital Influence",
     description:
       "Nairobi-based media and storytelling company helping ambitious brands connect with the audiences that matter through strategic storytelling, media production, and influence.",
@@ -84,10 +97,10 @@ const projects: Project[] = [
   },
 
   {
-    id: 7,
+    id: "gerusabejo",
     name: "Gerusabejo Building & Construction Company",
     description:
-      "Built on Integrity. Driven by Craft. Gerusabejo Building & Construction Company was founded on a single belief — that every client deserves a quality structure delivered with complete transparency and professionalism.\n\nLicensed and fully insured. Transparent pricing, no surprises. Dedicated site manager on every project.",
+      "Website for a licensed, fully insured Kenyan building and construction company — residential and commercial projects, transparent pricing, and a dedicated site manager on every build.",
     tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
     image: "/gerusabejo.webp",
     demo: "https://www.gerusabejoconstruction.com/",
@@ -95,10 +108,10 @@ const projects: Project[] = [
   },
 
   {
-    id: 8,
+    id: "tuchas",
     name: "Tucha's Auto Spares",
     description:
-      "Tucha's Auto Spares — Supplier of quality auto parts and accessories across Kenya. Customer-focused service with competitive pricing and fast delivery.",
+      "E-commerce site for a Kenyan supplier of quality auto parts and accessories — competitive pricing, customer-focused service, and fast delivery nationwide.",
     tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
     image: "/tuchas.webp",
     demo: "https://www.tuchasautospares.com/",
@@ -106,8 +119,8 @@ const projects: Project[] = [
   },
 
   {
-    id: 9,
-    name: "JamoSec AI – Cybersecurity Platform",
+    id: "jambosec",
+    name: "JamboSec AI – Cybersecurity Platform",
     description:
       "AI-powered platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
     tags: ["AI", "Cybersecurity", "React", "Node.js", "Python", "Supabase"],
@@ -117,7 +130,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 10,
+    id: "mkgitpilot",
     name: "MK GitPilot – Developer Automation Tool",
     description:
       "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
@@ -128,7 +141,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 11,
+    id: "patchnotes",
     name: "PatchNotes – Release & Dev Blog Platform",
     description:
       "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
@@ -139,7 +152,7 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 12,
+    id: "palinesco",
     name: "Palinesco – Construction Company Website",
     description:
       "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
@@ -151,7 +164,7 @@ const projects: Project[] = [
   },
 
   {
-    id: 13,
+    id: "caffeinated-thoughts",
     name: "Caffeinated Thoughts – Tech Blog",
     description:
       "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
@@ -162,14 +175,14 @@ const projects: Project[] = [
     status: "live",
   },
   {
-    id: 14,
+    id: "matatu",
     name: "Transport Booking – Matatu App",
     description:
       "Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets. Flutter + Firebase.",
     tags: ["Flutter", "Firebase", "Google Maps API"],
-    image: "https://images.unsplash.com/photo-1592853598064-a829ed372c0c?auto=format&fit=crop&w=600&h=400&q=80",
+    image: "/matatu.svg",
     github: "https://github.com/Kevrollin",
-    demo: "https://transport-booking-matatu-app.vercel.app/",
+    // Demo link removed: transport-booking-matatu-app.vercel.app returns DEPLOYMENT_NOT_FOUND. Re-add once redeployed.
     status: "beta",
   },
 ];
@@ -180,9 +193,10 @@ const filters: { key: Status; label: string }[] = [
   { key: "beta", label: "Beta" },
 ];
 
+// Badges sit on top of the screenshot (not the page background), so they stay solid in both themes.
 const statusColors: Record<Project["status"], string> = {
-  live: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-  beta: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+  live: "bg-green-100 text-green-800 ring-green-700/20",
+  beta: "bg-amber-100 text-amber-800 ring-amber-700/20",
 };
 
 const ProjectsSection = () => {
@@ -218,7 +232,9 @@ const ProjectsSection = () => {
             {filters.map((f) => (
               <button
                 key={f.key}
+                type="button"
                 onClick={() => setActive(f.key)}
+                aria-pressed={active === f.key}
                 className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   active === f.key
                     ? "bg-accent text-white shadow-sm"
@@ -243,16 +259,18 @@ const ProjectsSection = () => {
                   <img
                     src={project.image}
                     alt={`${project.name} — screenshot of the live site`}
+                    width={960}
+                    height={540}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src =
-                        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&h=400&q=80";
+                      const img = e.currentTarget;
+                      if (!img.src.endsWith("/placeholder.svg")) img.src = "/placeholder.svg";
                     }}
                   />
                   <span
-                    className={`absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full ${statusColors[project.status]}`}
+                    className={`absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full shadow-sm ring-1 ${statusColors[project.status]}`}
                     data-testid={`badge-status-${project.id}`}
                   >
                     {project.status === "live" ? "Live" : "Beta"}

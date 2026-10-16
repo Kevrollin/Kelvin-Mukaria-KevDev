@@ -5,7 +5,7 @@
 
   <url>
     <loc>https://kelvinmukaria.vercel.app/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://kelvinmukaria.vercel.app/" />
@@ -23,6 +23,11 @@
       <image:loc>https://kelvinmukaria.vercel.app/dppm.webp</image:loc>
       <image:title>DPPM Ltd – Dairy Processing and Packaging Machines Kenya</image:title>
       <image:caption>Corporate website for Dairy Processing and Packaging Machines Ltd, Nairobi Kenya.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kelvinmukaria.vercel.app/tumana.webp</image:loc>
+      <image:title>Tumana – Local Marketplace &amp; Errands Kenya</image:title>
+      <image:caption>Multi-vendor marketplace and errands platform for Kenya: shop local businesses, pay with M-Pesa, and track delivery to your door.</image:caption>
     </image:image>
   </url>
 

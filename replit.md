@@ -6,7 +6,8 @@ A minimal, professional digital portfolio for Kelvin Mukaria (KevDev) — Full-S
 ## Tech Stack
 - **Frontend**: React 18, TypeScript, Vite 5
 - **Styling**: Tailwind CSS, shadcn/ui (Radix UI components)
-- **Routing**: React Router DOM v6
+- **Routing**: none needed — `/` renders the page, any other path renders the lazy-loaded 404 (see `App.tsx`)
+- **Fonts**: self-hosted variable Inter in `public/fonts/` (preloaded; no Google Fonts request)
 - **Forms + Email**: React Hook Form, EmailJS browser SDK
 - **Theme**: Custom ThemeProvider with light/dark/system support
 
@@ -21,14 +22,15 @@ src/
     NotFound.tsx             - 404 page
   components/
     ThemeProvider.tsx        - Light/dark/system theme context
-    NavBar.tsx               - Fixed nav with theme toggle dropdown + mobile menu
+    NavBar.tsx               - Fixed nav with theme menu + mobile menu
+    ThemeMenu.tsx            - Lightweight Light/Dark/System picker (no Radix dropdown)
     HeroSection.tsx          - Name, tagline, CTA buttons, social links
     AboutSection.tsx         - Bio, stats, 4-domain pillar cards
     SkillsSection.tsx        - Filterable skills grid with proficiency badges
     ProjectsSection.tsx      - Filterable project cards (live/beta)
     ContactSection.tsx       - Email + WhatsApp contact form + socials
     Footer.tsx               - Minimal footer with links
-    ui/                      - shadcn/ui component library
+    ui/                      - shadcn/ui components actually in use (add more with `npx shadcn@latest add <name>`)
 ```
 
 ## Theme Support

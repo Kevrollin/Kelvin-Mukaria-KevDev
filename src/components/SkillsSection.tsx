@@ -85,7 +85,9 @@ const SkillsSection = () => {
             {categories.map((c) => (
               <button
                 key={c.key}
+                type="button"
                 onClick={() => setActive(c.key)}
+                aria-pressed={active === c.key}
                 className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   active === c.key
                     ? "bg-accent text-white shadow-sm"

@@ -32,9 +32,7 @@ A professional developer portfolio with a twist of humor and personality. This p
 - **Tailwind CSS**: Utility-first CSS framework for styling
 - **Shadcn UI**: Accessible UI components
 - **Lucide Icons**: Simple and consistent icon set
-- **React Router**: Client-side routing
-- **Framer Motion**: Smooth animations and transitions
-- **React Query**: Data fetching and cache management
+- **EmailJS**: Contact form delivery (loaded on demand)
 - **Vite**: Fast and optimized frontend build tool
 
 ## 🔧 Wanna Clone the File??

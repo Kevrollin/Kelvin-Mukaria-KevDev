@@ -1,16 +1,8 @@
-import { useState, useEffect } from "react";
 import { ArrowRight, Download, MapPin, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const HeroSection = () => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(t);
-  }, []);
-
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -23,11 +15,8 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          <div
-            className={`max-w-3xl transition-all duration-700 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
+          {/* CSS-only entrance: starts on first paint (no JS timer delaying LCP), skipped for reduced motion */}
+          <div className="max-w-3xl motion-safe:animate-fade-in-up">
             {/* Location + availability */}
             <div className="flex flex-wrap items-center gap-2 mb-6" data-testid="text-location">
               <MapPin className="h-4 w-4 text-accent flex-shrink-0" />

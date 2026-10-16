@@ -34,8 +34,8 @@ const ContactSection = () => {
         "OEzF15RYCvBQI8hwR"
       );
 
-        toast({ title: "Message sent", description: "Thanks! I'll get back to you shortly." });
-        setForm({ name: "", email: "", subject: "", message: "" });
+      toast({ title: "Message sent", description: "Thanks! I'll get back to you shortly." });
+      setForm({ name: "", email: "", subject: "", message: "" });
     } catch {
       toast({
         title: "Failed to send",

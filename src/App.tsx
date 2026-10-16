@@ -1,28 +1,24 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+// The 404 page is rarely seen, so keep it out of the main bundle.
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Single-page site: vercel.json rewrites every path to index.html, so any path other than "/" is a 404.
+const isHome = ["/", "/index.html"].includes(window.location.pathname);
 
 const App = () => (
   <ThemeProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <Toaster />
+    {isHome ? (
+      <Index />
+    ) : (
+      <Suspense fallback={null}>
+        <NotFound />
+      </Suspense>
+    )}
   </ThemeProvider>
 );
 

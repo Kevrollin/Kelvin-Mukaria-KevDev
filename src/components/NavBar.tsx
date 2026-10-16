@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Monitor } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/ThemeProvider";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import ThemeMenu from "@/components/ThemeMenu";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -21,16 +15,27 @@ const resumeHref = "/Kelvin_Mukaria_Resume.pdf";
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    onScroll(); // page may load already scrolled (refresh, #anchor link)
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Full-screen mobile menu: lock background scroll and close on Escape.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
+
   const closeMenu = () => setMenuOpen(false);
-  const ThemeIcon = theme === "dark" ? Moon : theme === "light" ? Sun : Monitor;
 
   return (
     <>
@@ -79,24 +84,7 @@ const NavBar = () => {
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle" aria-label="Toggle color theme">
-                    <ThemeIcon className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setTheme("light")} data-testid="menu-item-light">
-                    <Sun className="mr-2 h-4 w-4" /> Light
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")} data-testid="menu-item-dark">
-                    <Moon className="mr-2 h-4 w-4" /> Dark
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")} data-testid="menu-item-system">
-                    <Monitor className="mr-2 h-4 w-4" /> System
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <ThemeMenu testId="button-theme-toggle" />
 
               <Button
                 size="sm"
@@ -108,24 +96,7 @@ const NavBar = () => {
             </div>
 
             <div className="flex md:hidden items-center gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" data-testid="button-theme-toggle-mobile" aria-label="Toggle color theme">
-                    <ThemeIcon className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
-                    <Sun className="mr-2 h-4 w-4" /> Light
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    <Moon className="mr-2 h-4 w-4" /> Dark
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
-                    <Monitor className="mr-2 h-4 w-4" /> System
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <ThemeMenu testId="button-theme-toggle-mobile" />
               <Button
                 variant="ghost"
                 size="icon"
@@ -146,14 +117,6 @@ const NavBar = () => {
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
       >
-        <button
-          className="absolute top-5 right-5"
-          onClick={closeMenu}
-          data-testid="button-close-mobile-menu"
-          aria-label="Close menu"
-        >
-          <X className="h-6 w-6" />
-        </button>
         {navLinks.map((l) => (
           <a
             key={l.href}

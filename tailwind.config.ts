@@ -121,8 +121,7 @@ export default {
         'spin-slow': 'spin-slow 6s linear infinite'
 			},
       fontFamily: {
-        'jetbrains': ['"JetBrains Mono"', 'monospace'],
-        'inter': ['Inter', 'sans-serif']
+        'inter': ['Inter', '"Inter Fallback"', 'sans-serif']
       }
 		}
 	},
