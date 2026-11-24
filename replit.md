@@ -6,7 +6,7 @@ A minimal, professional digital portfolio for Kelvin Mukaria (KevDev) — Full-S
 ## Tech Stack
 - **Frontend**: React 18, TypeScript, Vite 5
 - **Styling**: Tailwind CSS, shadcn/ui (Radix UI components)
-- **Routing**: none needed — `/` renders the page, any other path renders the lazy-loaded 404 (see `App.tsx`)
+- **Routing**: none needed — `/` is the page; unknown paths get the prerendered static `404.html` (see `main.tsx`)
 - **Fonts**: self-hosted variable Inter in `public/fonts/` (preloaded; no Google Fonts request)
 - **Forms + Email**: React Hook Form, EmailJS browser SDK
 - **Theme**: Custom ThemeProvider with light/dark/system support
@@ -44,13 +44,12 @@ src/
 - WhatsApp direct link to +254 757 086 742
 
 ## SEO
-- Full meta tag suite: title, description, keywords, canonical, Open Graph, Twitter Card
-- Geo/local SEO tags targeting Nakuru, Meru, Kenya (ISO KE-31)
-- JSON-LD structured data: Person, WebSite, Organization (Ardena), BreadcrumbList schemas
-- `public/robots.txt` — allows all bots, references sitemap
-- `public/sitemap.xml` — all sections with images and lastmod dates
-- `vercel.json` — SPA rewrites + security headers + asset cache headers
-- Target domain: `https://kelvinmukaria.vercel.app`
+- Canonical domain `https://kelvin.ardena.co.ke`; `kelvinmukaria.vercel.app` 308-redirects to it (`vercel.json`)
+- Build-time prerender (`src/entry-server.tsx` + `scripts/prerender.mjs`): full HTML, head tags and JSON-LD in the initial response; React hydrates it
+- Single source of truth for SEO copy and identity: `src/config/site.ts`; projects: `src/data/projects.ts`
+- JSON-LD `@graph`: WebSite, ProfilePage, Person, Organization (Ardena), ItemList of CreativeWork projects
+- `sitemap.xml`, `robots.txt` and a static `404.html` (real 404, noindex) are generated into `dist/` at build time
+- `npm run seo:verify` checks the build output; see README "SEO, Prerendering & Deployment"
 
 ## Running
 ```bash

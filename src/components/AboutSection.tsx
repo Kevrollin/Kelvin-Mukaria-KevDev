@@ -29,19 +29,20 @@ const pillars = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-background">
+    <section id="about" aria-labelledby="about-heading" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
             {/* Left: bio + stats */}
             <div>
               <p
-                className="text-sm font-semibold text-accent uppercase tracking-widest mb-3"
+                className="text-sm font-semibold text-accent-strong uppercase tracking-widest mb-3"
                 data-testid="text-about-label"
               >
                 About
               </p>
               <h2
+                id="about-heading"
                 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5 leading-tight"
                 data-testid="text-about-heading"
               >
@@ -90,7 +91,7 @@ const AboutSection = () => {
                   data-testid={`card-pillar-${p.title.split(" ")[0].toLowerCase()}`}
                 >
                   <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
-                    <p.icon className="h-4 w-4 text-accent" />
+                    <p.icon className="h-4 w-4 text-accent" aria-hidden="true" />
                   </div>
                   <h3 className="font-semibold text-sm mb-1.5">{p.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{p.description}</p>

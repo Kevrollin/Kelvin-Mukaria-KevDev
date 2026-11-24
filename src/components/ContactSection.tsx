@@ -4,13 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Github, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
+import { contactLinks, profiles, site } from "@/config/site";
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com/Kevrollin" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/kelvin-mukaria-mk-98008b230" },
-  { icon: Twitter, label: "Twitter / X", href: "https://x.com/kelvinmukariaa" },
-  { icon: Mail, label: "Email", href: "mailto:kelvincodes25@gmail.com" },
-  { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/254757086742" },
+  { icon: Github, label: "GitHub", href: profiles.github },
+  { icon: Linkedin, label: "LinkedIn", href: profiles.linkedin },
+  { icon: Twitter, label: "Twitter / X", href: profiles.x },
+  { icon: Mail, label: "Email", href: contactLinks.email },
+  { icon: MessageCircle, label: "WhatsApp", href: contactLinks.whatsapp },
 ];
 
 const ContactSection = () => {
@@ -49,20 +50,21 @@ const ContactSection = () => {
 
   const sendWhatsApp = () => {
     const text = `Hi Kelvin,\n\nName: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
-    window.open(`https://wa.me/254757086742?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`${contactLinks.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-secondary/20 dark:bg-secondary/10">
+    <section id="contact" aria-labelledby="contact-heading" className="py-16 md:py-24 bg-secondary/20 dark:bg-secondary/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <p
-            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-left"
+            className="text-sm font-semibold text-accent-strong uppercase tracking-widest mb-3 text-left"
             data-testid="text-contact-label"
           >
             Contact
           </p>
           <h2
+            id="contact-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-left mb-3"
             data-testid="text-contact-heading"
           >
@@ -90,6 +92,7 @@ const ContactSection = () => {
                       id="name"
                       name="name"
                       placeholder="Your name"
+                      autoComplete="name"
                       value={form.name}
                       onChange={handleChange}
                       required
@@ -105,6 +108,7 @@ const ContactSection = () => {
                       name="email"
                       type="email"
                       placeholder="you@example.com"
+                      autoComplete="email"
                       value={form.email}
                       onChange={handleChange}
                       required
@@ -160,7 +164,7 @@ const ContactSection = () => {
                     className="w-full sm:w-auto gap-2"
                     data-testid="button-send-whatsapp"
                   >
-                    <MessageCircle className="h-4 w-4" /> WhatsApp
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
                   </Button>
                 </div>
               </form>
@@ -175,47 +179,50 @@ const ContactSection = () => {
                 </h3>
                 <div className="space-y-3 text-sm text-muted-foreground">
                   <div className="flex items-start gap-2">
-                    <Mail className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" />
+                    <Mail className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <span className="font-medium text-foreground block">Email</span>
                       <a
-                        href="mailto:kelvincodes25@gmail.com"
+                        href={contactLinks.email}
                         className="hover:text-accent transition-colors break-all"
                         data-testid="link-email-direct"
                       >
-                        kelvincodes25@gmail.com
+                        {site.email}
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <MessageCircle className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" />
+                    <MessageCircle className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <span className="font-medium text-foreground block">WhatsApp</span>
                       <a
-                        href="https://wa.me/254757086742"
+                        href={contactLinks.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-accent transition-colors"
                         data-testid="link-whatsapp-direct"
                       >
-                        +254 757 086 742
+                        {site.whatsappDisplay}
                       </a>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" />
+                    <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <span className="font-medium text-foreground block">Phone</span>
                       <a
-                        href="tel:+254117103255"
+                        href={contactLinks.phone}
                         className="hover:text-accent transition-colors"
                         data-testid="link-phone-direct"
                       >
-                        +254 117 103 255
+                        {site.phoneDisplay}
                       </a>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground pt-1">📍 Kenya (Nakuru / Meru)</p>
+                  <p className="text-xs text-muted-foreground pt-1">
+                    <span aria-hidden="true">📍 </span>
+                    {site.country.name} ({site.locations.map((l) => l.locality).join(" / ")})
+                  </p>
                 </div>
               </div>
 
@@ -229,13 +236,13 @@ const ContactSection = () => {
                     <a
                       key={s.label}
                       href={s.href}
-                      target={s.href.startsWith("mailto") ? undefined : "_blank"}
-                      rel="noopener noreferrer"
+                      target={s.href.startsWith("http") ? "_blank" : undefined}
+                      rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors group"
                       data-testid={`link-social-${s.label.toLowerCase().replace(/[^a-z]/g, "-")}`}
                     >
                       <span className="w-8 h-8 rounded-lg border border-border group-hover:border-accent/40 flex items-center justify-center transition-colors flex-shrink-0">
-                        <s.icon className="h-4 w-4" />
+                        <s.icon className="h-4 w-4" aria-hidden="true" />
                       </span>
                       {s.label}
                     </a>

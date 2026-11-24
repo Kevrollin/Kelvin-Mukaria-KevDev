@@ -1,24 +1,12 @@
-import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
 
-// The 404 page is rarely seen, so keep it out of the main bundle.
-const NotFound = lazy(() => import("./pages/NotFound"));
-
-// Single-page site: vercel.json rewrites every path to index.html, so any path other than "/" is a 404.
-const isHome = ["/", "/index.html"].includes(window.location.pathname);
-
+/** The homepage. Prerendered to dist/index.html at build time and hydrated by main.tsx. */
 const App = () => (
   <ThemeProvider>
     <Toaster />
-    {isHome ? (
-      <Index />
-    ) : (
-      <Suspense fallback={null}>
-        <NotFound />
-      </Suspense>
-    )}
+    <Index />
   </ThemeProvider>
 );
 

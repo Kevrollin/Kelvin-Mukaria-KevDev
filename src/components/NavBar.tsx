@@ -2,15 +2,9 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeMenu from "@/components/ThemeMenu";
+import { sections, site } from "@/config/site";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
-
-const resumeHref = "/Kelvin_Mukaria_Resume.pdf";
+const navLinks = sections.map((s) => ({ label: s.label, href: `#${s.id}` }));
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -48,19 +42,26 @@ const NavBar = () => {
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto flex items-center justify-between h-16">
-            <a href="#" className="flex items-center gap-2.5 font-bold text-lg tracking-tight" data-testid="link-logo">
+            <a
+              href="#home"
+              className="flex items-center gap-2.5 font-bold text-lg tracking-tight"
+              aria-label={`${site.name} — back to top`}
+              data-testid="link-logo"
+            >
               <img
-                src="/kelvin-avatar.png"
-                alt="Kelvin Mukaria"
+                src={site.avatarSmall}
+                alt=""
                 width={32}
                 height={32}
                 decoding="async"
                 className="w-8 h-8 rounded-full object-cover ring-2 ring-accent/30"
               />
-              Kelvin<span className="text-accent">.</span>
+              <span>
+                Kelvin<span className="text-accent">.</span>
+              </span>
             </a>
 
-            <nav className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
+            <nav aria-label="Primary" className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
               {navLinks.map((l) => (
                 <a
                   key={l.href}
@@ -72,7 +73,7 @@ const NavBar = () => {
                 </a>
               ))}
               <a
-                href={resumeHref}
+                href={site.resume}
                 target="_blank"
                 rel="noopener noreferrer"
                 download
@@ -86,12 +87,8 @@ const NavBar = () => {
             <div className="hidden md:flex items-center gap-3">
               <ThemeMenu testId="button-theme-toggle" />
 
-              <Button
-                size="sm"
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                data-testid="button-hire-me"
-              >
-                Hire Me
+              <Button size="sm" asChild data-testid="button-hire-me">
+                <a href="#contact">Hire Me</a>
               </Button>
             </div>
 
@@ -104,6 +101,7 @@ const NavBar = () => {
                 data-testid="button-mobile-menu"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
               >
                 {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
@@ -112,7 +110,9 @@ const NavBar = () => {
         </div>
       </header>
 
-      <div
+      <nav
+        id="mobile-menu"
+        aria-label="Mobile"
         className={`fixed inset-0 z-40 bg-background/98 backdrop-blur-lg flex flex-col justify-center items-center gap-8 md:hidden transition-all duration-300 ${
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
@@ -129,7 +129,7 @@ const NavBar = () => {
           </a>
         ))}
         <a
-          href={resumeHref}
+          href={site.resume}
           target="_blank"
           rel="noopener noreferrer"
           download
@@ -139,18 +139,12 @@ const NavBar = () => {
         >
           Resume
         </a>
-        <Button
-          size="lg"
-          className="mt-4 w-40"
-          onClick={() => {
-            closeMenu();
-            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-          }}
-          data-testid="button-hire-me-mobile"
-        >
-          Hire Me
+        <Button size="lg" className="mt-4 w-40" asChild data-testid="button-hire-me-mobile">
+          <a href="#contact" onClick={closeMenu}>
+            Hire Me
+          </a>
         </Button>
-      </div>
+      </nav>
     </>
   );
 };

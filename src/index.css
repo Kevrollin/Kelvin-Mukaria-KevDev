@@ -33,17 +33,21 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 215 90% 52%;
+    /* 45% (was 52%) so white button text meets WCAG AA (5.3:1) */
+    --primary: 215 90% 45%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 20% 96%;
     --secondary-foreground: 222 47% 11%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 16% 44%;
 
     --accent: 184 100% 34%;
     --accent-foreground: 0 0% 100%;
+    /* Deeper brand teal for small text and for fills behind text: 5.5:1 on the page background.
+       The brighter --accent stays for large type, icons and decoration. */
+    --accent-strong: 184 100% 24%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
@@ -75,7 +79,9 @@
     --muted-foreground: 215 16% 60%;
 
     --accent: 184 80% 42%;
-    --accent-foreground: 0 0% 100%;
+    /* Navy on bright teal is 7.2:1; white was 2.5:1 */
+    --accent-foreground: 222 47% 11%;
+    --accent-strong: 184 80% 42%;
 
     --destructive: 0 55% 40%;
     --destructive-foreground: 210 40% 98%;
@@ -120,5 +126,20 @@
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground/40;
+  }
+}
+
+/* Respect the OS "reduce motion" setting: no smooth scrolling, pulsing or hover lifts. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

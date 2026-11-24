@@ -2,190 +2,10 @@ import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { profiles } from "@/config/site";
+import { projects, projectImageAlt, projectImageSizes, projectImageSrcSet, type Project } from "@/data/projects";
 
-type Status = "all" | "live" | "beta";
-
-interface Project {
-  /** Stable slug — used for React keys and test ids, so reordering never changes them. */
-  id: string;
-  name: string;
-  description: string;
-  tags: string[];
-  image: string;
-  github?: string;
-  demo?: string;
-  status: "live" | "beta";
-}
-
-// Display order is array order.
-const projects: Project[] = [
-  {
-    id: "ardena",
-    name: "Ardena Platform Africa – Car Rental Marketplace",
-    description:
-      "Peer-to-peer car rental platform connecting verified vehicle owners with renters across Kenya. Transparent pricing, seamless booking, and multi-channel access including mobile apps.",
-    tags: ["React", "Node.js", "Mobile Apps", "Fintech", "Kenya"],
-    image: "/ardena.webp",
-    demo: "https://ardena.co.ke/",
-    status: "live",
-  },
-
-  {
-    id: "hicacy",
-    name: "Hicacy Destinations – Purpose-Led Travel in Western Kenya",
-    description:
-      "Community-led travel platform for discovering Western Kenya — from Kakamega Forest and Mt. Elgon to Ruma National Park and Ndere Island. Each trip supports regenerative agriculture and local community projects.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Framer Motion"],
-    image: "/hicacy.webp",
-    demo: "https://hicacy.com/",
-    status: "live",
-  },
- 
-  {
-    id: "dppm",
-    name: "DPPM Ltd – Dairy Processing & Packaging Machines",
-    description:
-      "Corporate website for Dairy Processing and Packaging Machines Ltd — a leading Kenyan provider of dairy machinery supply, installation, and commissioning services.",
-    tags: ["React", "Tailwind CSS", "Vite", "Corporate"],
-    image: "/dppm.webp",
-    demo: "https://dppmltd.com/",
-    status: "live",
-  },
-
-  {
-    id: "tumana",
-    name: "Tumana – Local Marketplace & Errands",
-    description:
-      "Multi-vendor marketplace and errands platform for Kenya. Shop trusted local businesses, pay with M-Pesa, and track delivery to your door in real time — with vendor dashboards, payouts, and admin tooling built in.",
-    tags: ["React", "Supabase", "M-Pesa", "PWA", "TanStack Query", "Realtime"],
-    image: "/tumana.webp",
-    demo: "https://tumana.store/",
-    status: "live",
-  },
-
-  {
-    id: "atei",
-    name: "ATEI – Africa Transformative Ecosystem Initiative",
-    description:
-      "Youth-led environmental research and conservation organisation working with communities, researchers, and governments to protect and restore Africa's ecosystems.",
-    tags: ["React", "Vite", "Tailwind CSS", "Conservation", "Non-Profit", "Africa"],
-    image: "/atei.webp",
-    demo: "https://www.atei.africa",
-    status: "live",
-  },
-
-  {
-    id: "randa",
-    name: "Randa Construction Enterprise",
-    description:
-      "Building construction contractor based in Nakuru, Kenya, working across residential, commercial, and industrial construction, roofing, renovation, and project management services.",
-    tags: ["React", "Vite", "Tailwind CSS", "Construction", "Kenya"],
-    image: "/randa.webp",
-    demo: "https://randaenterprise.co.ke",
-    status: "live",
-  },
-
-  {
-    id: "dalmas",
-    name: "Dalmas Creations – Media, Storytelling & Digital Influence",
-    description:
-      "Nairobi-based media and storytelling company helping ambitious brands connect with the audiences that matter through strategic storytelling, media production, and influence.",
-    tags: ["Next.js", "Tailwind CSS", "Media", "Kenya"],
-    image: "/dalmas.webp",
-    demo: "https://dalmascreationsdemo.vercel.app/",
-    status: "live",
-  },
-
-  {
-    id: "gerusabejo",
-    name: "Gerusabejo Building & Construction Company",
-    description:
-      "Website for a licensed, fully insured Kenyan building and construction company — residential and commercial projects, transparent pricing, and a dedicated site manager on every build.",
-    tags: ["Construction", "Engineering", "Kenya", "Commercial", "Residential"],
-    image: "/gerusabejo.webp",
-    demo: "https://www.gerusabejoconstruction.com/",
-    status: "live",
-  },
-
-  {
-    id: "tuchas",
-    name: "Tucha's Auto Spares",
-    description:
-      "E-commerce site for a Kenyan supplier of quality auto parts and accessories — competitive pricing, customer-focused service, and fast delivery nationwide.",
-    tags: ["E-Commerce", "Auto Parts", "Kenya", "Retail"],
-    image: "/tuchas.webp",
-    demo: "https://www.tuchasautospares.com/",
-    status: "live",
-  },
-
-  {
-    id: "jambosec",
-    name: "JamboSec AI – Cybersecurity Platform",
-    description:
-      "AI-powered platform for real-time threat detection, vulnerability analysis, and digital defense. Built with a dedicated team.",
-    tags: ["AI", "Cybersecurity", "React", "Node.js", "Python", "Supabase"],
-    image: "/jambosec.webp",
-    github: "https://github.com/Kevrollin",
-    demo: "https://jambosecaiio.vercel.app/",
-    status: "live",
-  },
-  {
-    id: "mkgitpilot",
-    name: "MK GitPilot – Developer Automation Tool",
-    description:
-      "Smart CLI tool that automates Git workflows — init, branch, commit, push, sync. Eliminates repetitive dev tasks and boosts shipping speed.",
-    tags: ["Python", "Node.js", "React", "Supabase"],
-    image: "/mkgitpilot.webp",
-    github: "https://github.com/Kevrollin",
-    demo: "http://mkgitpilot-dev.vercel.app/",
-    status: "live",
-  },
-  {
-    id: "patchnotes",
-    name: "PatchNotes – Release & Dev Blog Platform",
-    description:
-      "Developer-focused platform for publishing patch notes, product updates, and long-form dev blogs.",
-    tags: ["Next.js", "Supabase", "Tailwind CSS", "MDX"],
-    image: "/patchnotes.webp",
-    github: "https://github.com/Kevrollin",
-    demo: "https://patch-notes-dev.vercel.app/",
-    status: "live",
-  },
-  {
-    id: "palinesco",
-    name: "Palinesco – Construction Company Website",
-    description:
-      "Modern, responsive website for a construction company in Meru, Kenya — services, projects, and a client contact portal.",
-    tags: ["React", "shadcn/ui", "Tailwind CSS", "Vite"],
-    image: "/palinesco-overview-site.webp",
-    github: "https://github.com/Kevrollin/palinesco-plan-build-company",
-    demo: "https://palinesco-plan-build-company.vercel.app/",
-    status: "live",
-  },
-
-  {
-    id: "caffeinated-thoughts",
-    name: "Caffeinated Thoughts – Tech Blog",
-    description:
-      "Personal tech blog with M-Pesa Daraja API integration for a Buy Me a Coffee feature. Fully responsive.",
-    tags: ["React", "shadcn/ui", "Tailwind CSS", "M-Pesa API"],
-    image: "/caffeinated-thoughts.webp",
-    github: "https://github.com/Kevrollin/caffeinated-thoughts-alpha",
-    demo: "https://caffeinated-thoughts-alpha.vercel.app/",
-    status: "live",
-  },
-  {
-    id: "matatu",
-    name: "Transport Booking – Matatu App",
-    description:
-      "Mobile platform for Kenyan commuters to book matatu seats and receive digital tickets. Flutter + Firebase.",
-    tags: ["Flutter", "Firebase", "Google Maps API"],
-    image: "/matatu.svg",
-    github: "https://github.com/Kevrollin",
-    // Demo link removed: transport-booking-matatu-app.vercel.app returns DEPLOYMENT_NOT_FOUND. Re-add once redeployed.
-    status: "beta",
-  },
-];
+type Status = "all" | Project["status"];
 
 const filters: { key: Status; label: string }[] = [
   { key: "all", label: "All Projects" },
@@ -205,16 +25,17 @@ const ProjectsSection = () => {
   const filtered = active === "all" ? projects : projects.filter((p) => p.status === active);
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-background">
+    <section id="projects" aria-labelledby="projects-heading" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <p
-            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-left"
+            className="text-sm font-semibold text-accent-strong uppercase tracking-widest mb-3 text-left"
             data-testid="text-projects-label"
           >
             Work
           </p>
           <h2
+            id="projects-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-left mb-3"
             data-testid="text-projects-heading"
           >
@@ -224,7 +45,8 @@ const ProjectsSection = () => {
             className="text-left text-sm sm:text-base text-muted-foreground mb-10 max-w-xl"
             data-testid="text-projects-description"
           >
-            Real products I've built, shipped, and maintain.
+            Real products I've built, shipped, and maintain — from client websites and e-commerce to
+            AI and cybersecurity platforms.
           </p>
 
           {/* Filters */}
@@ -237,7 +59,7 @@ const ProjectsSection = () => {
                 aria-pressed={active === f.key}
                 className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   active === f.key
-                    ? "bg-accent text-white shadow-sm"
+                    ? "bg-accent-strong text-accent-foreground shadow-sm"
                     : "bg-background border border-border text-muted-foreground hover:text-foreground hover:border-accent/40"
                 }`}
                 data-testid={`button-filter-${f.key}`}
@@ -250,7 +72,7 @@ const ProjectsSection = () => {
           {/* Project grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" data-testid="list-projects">
             {filtered.map((project) => (
-              <div
+              <article
                 key={project.id}
                 className="group flex flex-col rounded-2xl border border-border overflow-hidden bg-background hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
                 data-testid={`card-project-${project.id}`}
@@ -258,7 +80,9 @@ const ProjectsSection = () => {
                 <div className="relative aspect-video overflow-hidden bg-secondary/30 flex-shrink-0">
                   <img
                     src={project.image}
-                    alt={`${project.name} — screenshot of the live site`}
+                    srcSet={projectImageSrcSet(project)}
+                    sizes={projectImageSrcSet(project) ? projectImageSizes : undefined}
+                    alt={projectImageAlt(project)}
                     width={960}
                     height={540}
                     loading="lazy"
@@ -266,7 +90,9 @@ const ProjectsSection = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       const img = e.currentTarget;
-                      if (!img.src.endsWith("/placeholder.svg")) img.src = "/placeholder.svg";
+                      if (img.src.endsWith("/placeholder.svg")) return;
+                      img.removeAttribute("srcset"); // otherwise the browser keeps picking the broken candidate
+                      img.src = "/placeholder.svg";
                     }}
                   />
                   <span
@@ -304,6 +130,7 @@ const ProjectsSection = () => {
                     )}
                   </div>
 
+                  {/* Visually hidden suffixes keep "Code" / "Live Demo" distinguishable for screen readers and crawlers. */}
                   <div className="flex gap-2 mt-auto pt-1">
                     {project.github && (
                       <Button
@@ -319,7 +146,8 @@ const ProjectsSection = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-1.5"
                         >
-                          <Github className="h-3.5 w-3.5" /> Code
+                          <Github className="h-3.5 w-3.5" aria-hidden="true" /> Code
+                          <span className="sr-only"> for {project.name} on GitHub</span>
                         </a>
                       </Button>
                     )}
@@ -336,25 +164,26 @@ const ProjectsSection = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-1.5"
                         >
-                          <ExternalLink className="h-3.5 w-3.5" /> Live Demo
+                          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /> Live Demo
+                          <span className="sr-only"> of {project.name}</span>
                         </a>
                       </Button>
                     )}
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
           <div className="text-left mt-10">
             <Button variant="outline" size="lg" asChild data-testid="button-view-all-github">
               <a
-                href="https://github.com/Kevrollin"
+                href={profiles.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
-                <Github className="h-4 w-4" /> More on GitHub
+                <Github className="h-4 w-4" aria-hidden="true" /> More projects on GitHub
               </a>
             </Button>
           </div>

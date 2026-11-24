@@ -44,8 +44,8 @@ const categories: { key: Category; label: string }[] = [
 ];
 
 const levelColor: Record<Skill["level"], string> = {
-  Expert: "bg-accent/15 text-accent",
-  Proficient: "bg-primary/10 text-primary dark:text-primary-foreground dark:bg-primary/20",
+  Expert: "bg-accent/15 text-accent-strong",
+  Proficient: "bg-primary/10 text-primary dark:bg-primary/20",
   Familiar: "bg-secondary text-muted-foreground",
 };
 
@@ -55,16 +55,17 @@ const SkillsSection = () => {
   const filtered = active === "all" ? skills : skills.filter((s) => s.category === active);
 
   return (
-    <section id="skills" className="py-16 md:py-24 bg-secondary/20 dark:bg-secondary/10">
+    <section id="skills" aria-labelledby="skills-heading" className="py-16 md:py-24 bg-secondary/20 dark:bg-secondary/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <p
-            className="text-sm font-semibold text-accent uppercase tracking-widest mb-3 text-left"
+            className="text-sm font-semibold text-accent-strong uppercase tracking-widest mb-3 text-left"
             data-testid="text-skills-label"
           >
             Skills
           </p>
           <h2
+            id="skills-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-left mb-3"
             data-testid="text-skills-heading"
           >
@@ -74,7 +75,8 @@ const SkillsSection = () => {
             className="text-left text-sm sm:text-base text-muted-foreground mb-10 max-w-xl"
             data-testid="text-skills-description"
           >
-            Technologies and tools I use to build, secure, and automate.
+            Technologies and tools I use to build, secure, and automate software — across frontend,
+            backend, cybersecurity, and AI.
           </p>
 
           {/* Filter buttons — scrollable on mobile */}
@@ -90,7 +92,7 @@ const SkillsSection = () => {
                 aria-pressed={active === c.key}
                 className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   active === c.key
-                    ? "bg-accent text-white shadow-sm"
+                    ? "bg-accent-strong text-accent-foreground shadow-sm"
                     : "bg-background border border-border text-muted-foreground hover:text-foreground hover:border-accent/40"
                 }`}
                 data-testid={`button-filter-${c.key}`}
@@ -101,9 +103,9 @@ const SkillsSection = () => {
           </div>
 
           {/* Skills grid */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 justify-start" data-testid="list-skills">
+          <ul className="flex flex-wrap gap-2 sm:gap-3 justify-start" data-testid="list-skills">
             {filtered.map((skill) => (
-              <div
+              <li
                 key={skill.name}
                 className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border bg-background hover:border-accent/40 hover:shadow-sm transition-all duration-150"
                 data-testid={`tag-skill-${skill.name.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`}
@@ -112,9 +114,9 @@ const SkillsSection = () => {
                 <span className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full font-medium ${levelColor[skill.level]}`}>
                   {skill.level}
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
